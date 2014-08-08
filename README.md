@@ -2,10 +2,6 @@ bitProject
 ==========
 참고 URL
 
-수정되요
+* Scope/Binding관련
+  - http://www.nextree.co.kr/p8890/
 ==========
-
-
-
-
-수정되네염
