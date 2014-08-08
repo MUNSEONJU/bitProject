@@ -8,7 +8,7 @@
 * 강조 ( bold ) : \**내용\**
 * Markdown(.md) 문법 [참조] (http://blog.kalkin7.com/2014/02/10/lets-write-using-markdown/)
 
-* 그냥적으면 이상하게나오니까 소제목이랑 ul정도만 활용하긔...
+그냥적으면 이상하게나오니까 소제목이랑 ul정도만 활용하긔...
 
 
 ##참고 URL
