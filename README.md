@@ -1,5 +1,4 @@
-bitProject
-==========
-참고 URL
+#bitProject
 
-Scope/Binding관련 : http://www.nextree.co.kr/p8890/
+##참고 URL
+ Scope/Binding관련 : http://www.nextree.co.kr/p8890/
