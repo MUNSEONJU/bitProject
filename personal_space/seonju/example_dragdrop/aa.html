@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>draggable example</title>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.0/jquery-ui.min.js"></script>
+	<style>
+	*{
+		padding:0;
+		margin:0;
+	}
+	#toolbar{
+		height:100px;
+		width:800px;
+		margin:0 auto;
+		background: #999;
+		text-align:center;
+		vertical-align: middle
+	}
+	#contents{
+		width:800px;
+		margin:10px auto;
+	}
+	.draggable{
+		display:inline-block;
+		padding:35px 50px;
+	}
+	.draggable .tool{
+		display:inline-block;
+		vertical-align: 
+	}
+	.draggable .tool:hover{
+		background: #eee;
+	}
+	#myCanvas{
+		background: #ccc;
+	}
+	</style>
+	<script>
+	$(function() {
+    $( ".draggable" ).draggable();
+    $( ".droppable" ).droppable({
+    	drop: function(event,ui){
+    		$(this).
+    	}
+    }) 
+  });
+	</script>
+
+</head>
+<body>
+
+<div id="toolbar">
+	<div class="draggable" class="ui-widget-content">
+		<img class="tool" src="img/tool1.png" width="30px" height="30px">
+	</div>
+	<div class="draggable" class="ui-widget-content">
+		<img class="tool" src="img/tool2.png" width="30px" height="30px">
+	</div>
+	<div class="draggable" class="ui-widget-content">
+		<img class="tool" src="img/tool3.png" width="30px" height="30px">
+	</div>
+</div>
+
+<div id="contents">
+	<canvas id="myCanvas" class="droppable" width="800px" height="1000px"/>
+</div>
+
+</body>
+</html>

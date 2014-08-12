@@ -19,16 +19,15 @@
 <body>
 <div id="wrap">
 
+<div id="navigator">
 <div class = "navbar navbar-inverse navbar-static-top">
 <div class = "container">
-
 	<div  class = "navbar-brand">
 		<div class = "logo" >
 		  <p>ngBot</p> 
 		  <!-- <img src="ngbot.png" style="height:90%"> -->
 		</div>
 	</div>
-
 	<button class = "navbar-toggle" >
 		<!-- 작게 만들었을 떄 아이콘바 4개 -->
 		<span class = "icon-bar"></span>
@@ -36,7 +35,6 @@
 		<span class = "icon-bar"></span>
 		<span class = "icon-bar"></span>
 	</button>
-
 	<div class="collapse navbar-collapse navHeaderCollapse">
 	  <ul class = "nav navbar-nav navbar-right">
 	    <li class="active"><a href="#" >GUIDE</a></li>
@@ -45,9 +43,14 @@
 	    <li><a href="#">CONTACT</a></li>
 	  </ul>
 	</div>
- 
+</div>
+</div>
+</div>
+
+<div id="contents">
 	<div ng-app="carousel">
 		<div class="carousel" ng-controller="CarouselDemoCtrl">
+			<div>
 			<carousel interval="myInterval">
 				<slide ng-repeat="slide in slides" active="slide.active">
 					<img ng-src="{{slide.image}}" style="margin:auto; width:100%; max-height:500px !important">
@@ -57,8 +60,10 @@
 					</div>
 				</slide>
 			</carousel>
+			</div>
 		</div>
 	</div>
+</div>
 
 </div>
 </body>
