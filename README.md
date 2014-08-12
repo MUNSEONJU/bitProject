@@ -17,3 +17,4 @@
 
 ##참고 URL
 * Scope/Binding관련 : http://www.nextree.co.kr/p8890/
+* 무작위 이미지 : http://lorempixel.com/ [width] / [height]
