@@ -1,0 +1,172 @@
+
+
+/*#header{
+	height:100px;
+	background:#1093FF;
+}*/
+/*.navbar-static-top .container{
+	height:300px;
+}*/
+*{
+	margin:0px;
+	padding:0px;
+}
+
+body{
+	background:#dedede;
+}
+
+
+#header{
+	background:#222;
+	height:25px;
+	color:#444;
+}
+
+.sign-bar{
+	padding:2px 0 0;
+	text-align:right;
+	margin:0 53px;
+	width:auto;
+}
+
+.sign-bar .vertical-bar{
+	display:inline-block;
+	width:3px;
+	height:11px;
+	background:#66f;
+}
+.sign-bar a{
+	color:#ccc;
+	text-decoration:none;
+	display:inline;
+	margin-top:3px;
+}
+
+.sign-bar a:hover{
+	color:#fff;
+}
+
+.sign-element{
+	padding:0 3px;	
+}
+
+.sign-bar .state-sign-in{
+	display:none;
+}
+
+.navbar {
+	border-top: 7px solid #444;
+	border-bottom: 7px solid #444;
+	margin-bottom:0;
+}
+
+.navbar b{
+	color:#66f;
+}
+
+.navbar-text{
+	color:#fff;
+}
+
+@-webkit-keyframes navAni{
+ /*to { background: #33e; }*/
+ 	to { 
+	color:#fff;
+ 	background: #444; 
+ 	}
+}
+
+.navbar-nav>.active>a{
+	background:#33e !important;
+}
+
+.navbar-static-top li a{
+	font-size: 1em;
+	font-weight: bold;
+	height:80px;
+	padding:30px 15px;
+	color: #ccc !important;
+}
+
+.navbar-static-top li a:hover{
+	-webkit-animation: navAni 0.2s;
+	-webkit-animation-fill-mode: forwards;
+}
+
+.navbar-static-top .logo{
+	padding:5px;
+}
+
+.navbar-brand{
+	padding:0;
+	height:80px;
+}
+.navbar-brand > span{
+	display:block;
+	width:196px;
+	height:80px;
+	background-image: url(../img/logo196x80.png); 
+}
+.navbar-brand > span:hover{
+	background-image: url(../img/logo196x80_hover.png); 
+}
+.navbar-brand p{
+	display:inline-block;
+	padding:28px 0 0;
+}
+
+.navbar-toggle{
+	margin-top:18px;
+}
+
+/* 너비 768 ~ ? */
+@media(min-width : 768px){
+	.container{
+		width:auto;
+		margin-right:40px;
+		margin-left:40px;
+	}
+}
+
+/* 너비 800 ~ ? */
+@media (max-width:800px){
+	.navbar-brand > span {
+		display:block;
+		width:115px;
+		height:47px;
+		margin-top:15px;
+		background-image: url(../img/logo115x47.png);
+		background-repeat: no-repeat; 
+	}
+	.navbar-brand > span:hover{
+		background-image: url(../img/logo115x47_hover.png);
+		background-repeat: no-repeat; 
+	}
+}
+
+/* 너비 ? ~ 767*/
+@media (max-width:767px){
+
+	.navbar-brand>span {
+		display:block;
+		width:115px;
+		height:47px;
+		margin-top:0px;
+		background-image: url(../img/logo115x47.png); 
+	}
+	.navbar-brand{
+		position:relative;
+		float:left;
+		width:115px;
+		height:47px !important;
+		margin:5px 0 5px 5px;
+
+	}
+	.navbar-toggle{
+		margin:9px 0 0 0px;
+	}
+	.sign-bar{
+	margin:0 20px;
+}
+}

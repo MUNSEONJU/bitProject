@@ -22,10 +22,6 @@ body{
 	background:#33e !important;
 }
 
-.navbar-static-top{
-	margin:0;
-}
-
 .navbar-static-top li a{
 	font-size: 1.1em;
 	font-weight: bold;
@@ -39,6 +35,13 @@ body{
 	-webkit-animation-fill-mode: forwards;
 }
 
+.navbar-static-top .logo{
+	padding:5px;
+}
+
+.navbar-static-top .logo img{
+	height:100%;
+}
 
 .navbar-brand{
 	padding:0;
