@@ -3,6 +3,9 @@
   <head>
     <meta charset="UTF-8">
     <title>TEST</title>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css">
+    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="http://code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
     <script src="http://code.angularjs.org/1.2.9/angular.min.js"></script>
     <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
     <script src="../ui-bootstrap-tpls-0.11.0.min.js"></script>
@@ -10,25 +13,49 @@
     <style>
       .ta {
         width: 50%;
-        height: 300px;
-      }    
-      
-      .frm {
-        border: 2px solid red;
-        width: 50%;
-        height: 300px;
+        height: 600px;
       }
+      
+      #result_dialog {
+        position: absolute;
+        top: 100px;
+        left: 500px;
+        width: 200px;
+        height: 200px;
+        padding: 10px;
+        background-color: #DDDFDD;
+        border: 2px solid green;
+      }
+      
+      #ifr {
+        width: 100%;
+        background-color: white;
+      }
+      
     </style>
+
+    <script>
+			$(function() {
+				$("#result_dialog").draggable();
+			});
+			 $(function() {
+        $("#result_dialog").resizable();
+      });
+    </script>
   </head>
-  <body ng-controller="ctrl">
+  <body ng-controller="ctrl" style="background-color: gray; position: relative">
     <div>
       <textarea class="ta" ng-model="code" ng-change="evt();"></textarea>
     </div>
-    
-    <div>
-      <iframe class="frm" src="about:blank" id="ifr">
-        
-      </iframe>  
+
+    <div id="result_dialog">
+      <div class="result_label">
+        <label>Result</label>
+      </div>
+      <div class="frm_div">
+        <iframe src="about:blank" id="ifr"></iframe>
+      </div>
+      <!-- <button>Full Screen</button>         -->
     </div>
   </body>
 </html>

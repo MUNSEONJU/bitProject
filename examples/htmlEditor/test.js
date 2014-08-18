@@ -4,13 +4,12 @@ controller('ctrl', function ($scope) {
   $scope.code = '';
   
   $scope.evt = function (event) {
-  	
 		var idoc = document.getElementById('ifr').contentWindow.document;
-		idoc.body.innerHTML = $scope.code;
+		idoc.open();
+		idoc.write($scope.code);
+  	idoc.close();
   };
 });
-
-
 
 
 
