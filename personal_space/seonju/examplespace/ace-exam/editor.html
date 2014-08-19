@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Editor</title>
+  <style type="text/css" media="screen">
+    body {
+        overflow: hidden;
+    }
+    
+    #editor { 
+        margin: 0;
+        width:500px;
+        height:500px;
+    }
+  </style>
+</head>
+<body>
+<pre id="editor">function foo(items) {
+    var i;
+    for (i = 0; i &lt; items.length; i++) {
+        alert("Ace Rocks " + items[i]);
+    }
+}</pre>
+<div>
+<button onclick="btnF1()">zaasdfa</button>
+</div>
+<pre id="pre1"></pre>
+<textarea id="ta1" cols="50" rows="50"></textarea>
+
+
+<script src="src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+<script>
+    var editor = ace.edit("editor");
+    editor.setTheme("ace/theme/twilight");
+    editor.getSession().setMode("ace/mode/html");
+
+    var temp = '';
+    function btnF1(){
+      document.getElementById("ta1").value = editor.getValue();
+      document.getElementById("pre1").innerHTML = editor.getValue();
+    }
+
+
+</script>
+
+</body>
+</html>
