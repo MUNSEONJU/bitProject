@@ -1,0 +1,732 @@
+
+<!DOCTYPE html>
+<html class=' composer' dir='ltr' lang='en' xmlns:fb='https://www.facebook.com/2008/fbml' xmlns:og='http://ogp.me/ns#' xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"beacon-5.newrelic.com","errorBeacon":"bam.nr-data.net","licenseKey":"8502746af5","applicationID":"2210607","transactionName":"c1hZF0tfVQkEExoFDV1HWBBcQhYVEw5fAwFERBgQUV9O","queueTime":7,"applicationTime":172,"ttGuid":"","agentToken":null,"agent":"js-agent.newrelic.com/nr-411.min.js"}</script>
+<script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={xpid:"VwYAVVFXGwECVVFUBwY="};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var o=e[n]={exports:{}};t[n][0].call(o.exports,function(e){var o=t[n][1][e];return r(o?o:e)},o,o.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<n.length;o++)r(n[o]);return r}({1:[function(t,e){function n(t,e,n){n||(n={});for(var r=o[t],a=r&&r.length||0,s=n[i]||(n[i]={}),u=0;a>u;u++)r[u].apply(s,e);return s}function r(t,e){var n=o[t]||(o[t]=[]);n.push(e)}var o={},i="nr@context";e.exports={on:r,emit:n}},{}],2:[function(t){function e(t,e,n,i,s){return u?u-=1:r("err",[s||new UncaughtException(t,e,n)]),"function"==typeof a?a.apply(this,o(arguments)):!1}function UncaughtException(t,e,n){this.message=t||"Uncaught error with no additional information",this.sourceURL=e,this.line=n}function n(t){r("err",[t,(new Date).getTime()])}var r=t("handle"),o=t(6),i=t(5),a=window.onerror,s=!1,u=0;t("loader").features.push("err"),window.onerror=e,NREUM.noticeError=n;try{throw new Error}catch(d){"stack"in d&&(t(1),t(2),"addEventListener"in window&&t(3),window.XMLHttpRequest&&XMLHttpRequest.prototype&&XMLHttpRequest.prototype.addEventListener&&t(4),s=!0)}i.on("fn-start",function(){s&&(u+=1)}),i.on("fn-err",function(t,e,r){s&&(this.thrown=!0,n(r))}),i.on("fn-end",function(){s&&!this.thrown&&u>0&&(u-=1)}),i.on("internal-error",function(t){r("ierr",[t,(new Date).getTime(),!0])})},{1:5,2:4,3:3,4:6,5:1,6:14,handle:"D5DuLP",loader:"G9z0Bl"}],3:[function(t){function e(t){r.inPlace(t,["addEventListener","removeEventListener"],"-",n)}function n(t){return t[1]}var r=t(1),o=(t(3),t(2));if(e(window),"getPrototypeOf"in Object){for(var i=document;i&&!i.hasOwnProperty("addEventListener");)i=Object.getPrototypeOf(i);i&&e(i);for(var a=XMLHttpRequest.prototype;a&&!a.hasOwnProperty("addEventListener");)a=Object.getPrototypeOf(a);a&&e(a)}else XMLHttpRequest.prototype.hasOwnProperty("addEventListener")&&e(XMLHttpRequest.prototype);o.on("addEventListener-start",function(t){if(t[1]){var e=t[1];"function"==typeof e?this.wrapped=e["nr@wrapped"]?t[1]=e["nr@wrapped"]:e["nr@wrapped"]=t[1]=r(e,"fn-"):"function"==typeof e.handleEvent&&r.inPlace(e,["handleEvent"],"fn-")}}),o.on("removeEventListener-start",function(t){var e=this.wrapped;e&&(t[1]=e)})},{1:15,2:1,3:14}],4:[function(t){var e=(t(3),t(1)),n=t(2);e.inPlace(window,["requestAnimationFrame","mozRequestAnimationFrame","webkitRequestAnimationFrame","msRequestAnimationFrame"],"raf-"),n.on("raf-start",function(t){t[0]=e(t[0],"fn-")})},{1:15,2:1,3:14}],5:[function(t){function e(t){var e=t[0];"string"==typeof e&&(e=new Function(e)),t[0]=n(e,"fn-")}var n=(t(3),t(1)),r=t(2);n.inPlace(window,["setTimeout","setInterval","setImmediate"],"setTimer-"),r.on("setTimer-start",e)},{1:15,2:1,3:14}],6:[function(t){function e(){o.inPlace(this,s,"fn-")}function n(t,e){o.inPlace(e,["onreadystatechange"],"fn-")}function r(t,e){return e}var o=t(1),i=t(2),a=window.XMLHttpRequest,s=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"];window.XMLHttpRequest=function(t){var n=new a(t);try{i.emit("new-xhr",[],n),o.inPlace(n,["addEventListener","removeEventListener"],"-",function(t,e){return e}),n.addEventListener("readystatechange",e,!1)}catch(r){try{i.emit("internal-error",r)}catch(s){}}return n},window.XMLHttpRequest.prototype=a.prototype,o.inPlace(XMLHttpRequest.prototype,["open","send"],"-xhr-",r),i.on("send-xhr-start",n),i.on("open-xhr-start",n)},{1:15,2:1}],7:[function(t){function e(){function e(t){if("string"==typeof t&&t.length)return t.length;if("object"!=typeof t)return void 0;if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if("undefined"!=typeof FormData&&t instanceof FormData)return void 0;try{return JSON.stringify(t).length}catch(e){return void 0}}function n(t){var n=this.params,r=this.metrics;if(!this.ended){this.ended=!0;for(var i=0;u>i;i++)t.removeEventListener(s[i],this.listener,!1);if(!n.aborted){if(r.duration=(new Date).getTime()-this.startTime,4===t.readyState){n.status=t.status;var a=t.responseType,d="arraybuffer"===a||"blob"===a||"json"===a?t.response:t.responseText,f=e(d);if(f&&(r.rxSize=f),this.sameOrigin){var c=t.getResponseHeader("X-NewRelic-App-Data");c&&(n.cat=c.split(", ").pop())}}else n.status=0;r.cbTime=this.cbTime,o("xhr",[n,r])}}}function r(t,e){var n=i(e),r=t.params;r.host=n.hostname+":"+n.port,r.pathname=n.pathname,t.sameOrigin=n.sameOrigin}t("loader").features.push("xhr");var o=t("handle"),i=t(1),a=t(5),s=["load","error","abort","timeout"],u=s.length,d=t(2);t(3),t(4),a.on("new-xhr",function(){this.totalCbs=0,this.called=0,this.cbTime=0,this.end=n,this.ended=!1,this.xhrGuids={}}),a.on("open-xhr-start",function(t){this.params={method:t[0]},r(this,t[1]),this.metrics={}}),a.on("open-xhr-end",function(t,e){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&e.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid)}),a.on("send-xhr-start",function(t,n){var r=this.metrics,o=t[0],i=this;if(r&&o){var d=e(o);d&&(r.txSize=d)}this.startTime=(new Date).getTime(),this.listener=function(t){try{"abort"===t.type&&(i.params.aborted=!0),("load"!==t.type||i.called===i.totalCbs&&(i.onloadCalled||"function"!=typeof n.onload))&&i.end(n)}catch(e){try{a.emit("internal-error",e)}catch(r){}}};for(var f=0;u>f;f++)n.addEventListener(s[f],this.listener,!1)}),a.on("xhr-cb-time",function(t,e,n){this.cbTime+=t,e?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof n.onload||this.end(n)}),a.on("xhr-load-added",function(t,e){var n=""+d(t)+!!e;this.xhrGuids&&!this.xhrGuids[n]&&(this.xhrGuids[n]=!0,this.totalCbs+=1)}),a.on("xhr-load-removed",function(t,e){var n=""+d(t)+!!e;this.xhrGuids&&this.xhrGuids[n]&&(delete this.xhrGuids[n],this.totalCbs-=1)}),a.on("addEventListener-end",function(t,e){e instanceof XMLHttpRequest&&"load"===t[0]&&a.emit("xhr-load-added",[t[1],t[2]],e)}),a.on("removeEventListener-end",function(t,e){e instanceof XMLHttpRequest&&"load"===t[0]&&a.emit("xhr-load-removed",[t[1],t[2]],e)}),a.on("fn-start",function(t,e,n){e instanceof XMLHttpRequest&&("onload"===n&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=(new Date).getTime()))}),a.on("fn-end",function(t,e){this.xhrCbStart&&a.emit("xhr-cb-time",[(new Date).getTime()-this.xhrCbStart,this.onload,e],e)})}window.XMLHttpRequest&&XMLHttpRequest.prototype&&XMLHttpRequest.prototype.addEventListener&&!/CriOS/.test(navigator.userAgent)&&e()},{1:8,2:11,3:3,4:6,5:1,handle:"D5DuLP",loader:"G9z0Bl"}],8:[function(t,e){e.exports=function(t){var e=document.createElement("a"),n=window.location,r={};e.href=t,r.port=e.port;var o=e.href.split("://");return!r.port&&o[1]&&(r.port=o[1].split("/")[0].split(":")[1]),r.port&&"0"!==r.port||(r.port="https"===o[0]?"443":"80"),r.hostname=e.hostname||n.hostname,r.pathname=e.pathname,"/"!==r.pathname.charAt(0)&&(r.pathname="/"+r.pathname),r.sameOrigin=!e.hostname||e.hostname===document.domain&&e.port===n.port&&e.protocol===n.protocol,r}},{}],handle:[function(t,e){e.exports=t("D5DuLP")},{}],D5DuLP:[function(t,e){function n(t,e){var n=r[t];return n?n.apply(this,e):(o[t]||(o[t]=[]),void o[t].push(e))}var r={},o={};e.exports=n,n.queues=o,n.handlers=r},{}],11:[function(t,e){function n(t){if(!t||"object"!=typeof t&&"function"!=typeof t)return-1;if(t===window)return 0;if(o.call(t,"__nr"))return t.__nr;try{return Object.defineProperty(t,"__nr",{value:r,writable:!0,enumerable:!1}),r}catch(e){return t.__nr=r,r}finally{r+=1}}var r=1,o=Object.prototype.hasOwnProperty;e.exports=n},{}],loader:[function(t,e){e.exports=t("G9z0Bl")},{}],G9z0Bl:[function(t,e){function n(){var t=p.info=NREUM.info;if(t&&t.agent&&t.licenseKey&&t.applicationID&&u&&u.body){p.proto="https"===c.split(":")[0]||t.sslForHttp?"https://":"http://",a("mark",["onload",i()]);var e=u.createElement("script");e.src=p.proto+t.agent,u.body.appendChild(e)}}function r(){"complete"===u.readyState&&o()}function o(){a("mark",["domContent",i()])}function i(){return(new Date).getTime()}var a=t("handle"),s=window,u=s.document,d="addEventListener",f="attachEvent",c=(""+location).split("?")[0],p=e.exports={offset:i(),origin:c,features:[]};u[d]?(u[d]("DOMContentLoaded",o,!1),s[d]("load",n,!1)):(u[f]("onreadystatechange",r),s[f]("onload",n)),a("mark",["firstbyte",i()])},{handle:"D5DuLP"}],14:[function(t,e){function n(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,o=n-e||0,i=Array(0>o?0:o);++r<o;)i[r]=t[e+r];return i}e.exports=n},{}],15:[function(t,e){function n(t,e,r,s){function nrWrapper(){try{var n,a=u(arguments),d=this,f=r&&r(a,d)||{}}catch(c){i([c,"",[a,d,s],f])}o(e+"start",[a,d,s],f);try{return n=t.apply(d,a)}catch(p){throw o(e+"err",[a,d,p],f),p}finally{o(e+"end",[a,d,n],f)}}return a(t)?t:(e||(e=""),nrWrapper[n.flag]=!0,nrWrapper)}function r(t,e,r,o){r||(r="");var i,s,u,d="-"===r.charAt(0);for(u=0;u<e.length;u++)s=e[u],i=t[s],a(i)||(t[s]=n(i,d?s+r:r,o,s,t))}function o(t,e,n){try{s.emit(t,e,n)}catch(r){i([r,t,e,n])}}function i(t){try{s.emit("internal-error",t)}catch(e){}}function a(t){return!(t&&"function"==typeof t&&t.apply&&!t[n.flag])}var s=t(1),u=t(2);e.exports=n,n.inPlace=r,n.flag="nr@wrapper"},{1:1,2:14}]},{},["G9z0Bl",2,7]);</script>
+<script>
+
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-25136408-1', 'codecademy.com');
+  ga('send', 'pageview');
+
+  // Sets a ga-custom-dimension on the "hit"
+  // - This usage: Indicates that the view was using the non-rebrand (old world)
+  ga('set', 'eng:deprecated', "old-ui");
+
+  // chartbeat
+  var _sf_startpt=(new Date()).getTime();
+
+// Generic
+var root_url = "http://www.codecademy.com/";
+
+// CCDATA
+window.CCDATA = {};
+CCDATA.env = 'production';
+CCDATA.request_host = 'www.codecademy.com';
+
+CCDATA.secureSandboxIndexPath = 'http://cdn-production.codecademy.com/assets/secure/index-c5bf1319f62cb07c26239e761a9ed5c9.html';
+
+CCDATA.asset_host = 'cdn-production.codecademy.com';
+CCDATA.assets_compiled = true;
+
+CCDATA.available_locales = 'en|ko|fa|ru|es-AR|ja|fr|zh|fr-FR|pt-BR|de|ky-KG|es|pt|ar';
+
+CCDATA.API_HOST = '/api';
+
+
+
+</script>
+
+
+<title>HTML Basics | Codecademy</title>
+<meta charset='utf-8'>
+<meta content='IE=edge,chrome=1' http='{:equiv=&gt;"X-UA-Compatible"}'>
+<meta content="Codecademy is the easiest way to learn how to code. It's interactive, fun, and you can do it with your friends." name='description'>
+<link href='/favicon.ico' rel='shortcut icon'>
+<link href='/blog.rss' rel='alternate' title='Codecademy Blog' type='application/rss+xml'>
+<meta content='width=device-width, initial-scale=1.0, user-scalable=no' name='viewport'>
+
+
+
+<meta property="fb:app_id" content="212500508799908"/>
+<meta property="og:url" content="http://www.codecademy.com/courses/web-beginner-en-HZA3b/0/2?curriculum_id=50579fb998b470000202dc8b"/>
+<meta property="og:site_name" content="Codecademy"/>
+
+  <meta property="og:type" content="article"/>
+  <meta property="og:title" content="HTML Basics"/>
+  <meta property="og:description" content="Codecademy is the easiest way to learn how to code. It&#x27;s interactive, fun, and you can do it with your friends."/>
+
+
+<meta content="authenticity_token" name="csrf-param" />
+<meta content="qz2Vqz+bDP49yewXMBJx/RLa954mbonjvM3x8i8MvaQ=" name="csrf-token" />
+
+  <link href="http://cdn-production.codecademy.com/assets/application-ltr-8842657315e662205ffdada6f4d9f3ab.css" media="screen" rel="stylesheet" type="text/css" />
+
+<link href="http://fonts.googleapis.com/css?family=Open+Sans:100,400,700" media="screen" rel="stylesheet" type="text/css" />
+<link href="http://cdn-production.codecademy.com/assets/rebrand/layouts/patch-6e46531cda42088e28dc975c6c1590db.css" media="screen" rel="stylesheet" type="text/css" />
+
+<!--[if gte IE 9]>
+<style type="text/css">
+  .gradient {filter: none;}
+</style>
+<![endif]-->
+
+<script src="http://cdn-production.codecademy.com/assets/templates/widgets-en-81534a78963be1efb02824cb3b86c135.js" type="text/javascript"></script>
+</head>
+<body class='projects show composer'>
+
+
+<script src="http://cdn-production.codecademy.com/assets/templates/composer-en-c65dd524db77b8b51b0478343b33b977.js" type="text/javascript"></script>
+
+
+<input type="hidden" id="data-source" value="conserv"/>
+
+<script>
+  CCDATA.composer = {};
+  CCDATA.composer.experiments = {};
+  CCDATA.composer.lastHint = {};
+  CCDATA.composer.backtestType = 'cached_invalid_answers';
+  CCDATA.composer.course = {"_id":"5024844597a4040002069e67","name":"HTML Basics","projects":[{"id":"5024844597a4040002069e68","checkpoints":[{"_id":"50248445c5a725000206935f","index":0,"code_reset":true,"default_files":[{"filename":"test.html","content":"\u003C!DOCTYPE html\u003E\n\t\u003Cstrong\u003EFeel free to change this text.\u003C/strong\u003E\n    "}],"entry":"Every webpage you look at is written in a language called HTML. You can think of HTML as the skeleton that gives every webpage structure. In this course, we'll use HTML to add paragraphs, headings, images and links to a webpage.\n\nIn the editor to the right, there's a tab called `test.html`. This is the file we'll type our HTML into. See the code with the `\u003C\u003E`s? That's HTML! Like any language, it has its own special **syntax** (rules for communicating).\n\nWhen we press Save \u0026 Submit Code, the results tab will act like an Internet **browser** (*e.g.* Chrome, Firefox, Internet Explorer). A browser's job is to transform the code in `test.html` into a recognizable webpage! It knows how to lay out the page by following the HTML syntax.","entry_html":"\u003Cp\u003EEvery webpage you look at is written in a language called HTML. You can think of HTML as the skeleton that gives every webpage structure. In this course, we\u0026#39;ll use HTML to add paragraphs, headings, images and links to a webpage.\u003C/p\u003E\n\n\u003Cp\u003EIn the editor to the right, there\u0026#39;s a tab called \u003Ccode\u003Etest.html\u003C/code\u003E. This is the file we\u0026#39;ll type our HTML into. See the code with the \u003Ccode\u003E\u0026lt;\u0026gt;\u003C/code\u003Es? That\u0026#39;s HTML! Like any language, it has its own special \u003Cstrong\u003Esyntax\u003C/strong\u003E (rules for communicating).\u003C/p\u003E\n\n\u003Cp\u003EWhen we press Save \u0026amp; Submit Code, the results tab will act like an Internet \u003Cstrong\u003Ebrowser\u003C/strong\u003E (\u003Cem\u003Ee.g.\u003C/em\u003E Chrome, Firefox, Internet Explorer). A browser\u0026#39;s job is to transform the code in \u003Ccode\u003Etest.html\u003C/code\u003E into a recognizable webpage! It knows how to lay out the page by following the HTML syntax.\u003C/p\u003E\n","external_resources":["https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"],"hint":"If you're not sure what to change the text on line 2 to, why not change **Feel free to change this text.** to **I'm about to learn HTML?**\n\nDon't change or remove the `\u003Cstrong\u003E` bit or the `\u003C/strong\u003E` bit! We'll explain what those do soon.","hint_html":"\u003Cp\u003EIf you\u0026#39;re not sure what to change the text on \u003Ca href=\"javascript:void(0)\" class=\"line-no\" data-from=\"2\" data-to=\"\"\u003Eline 2\u003C/a\u003E to, why not change \u003Cstrong\u003EFeel free to change this text.\u003C/strong\u003E to \u003Cstrong\u003EI\u0026#39;m about to learn HTML?\u003C/strong\u003E\u003C/p\u003E\n\n\u003Cp\u003EDon\u0026#39;t change or remove the \u003Ccode\u003E\u0026lt;strong\u0026gt;\u003C/code\u003E bit or the \u003Ccode\u003E\u0026lt;/strong\u0026gt;\u003C/code\u003E bit! We\u0026#39;ll explain what those do soon.\u003C/p\u003E\n","instruction":"1. To the right, we have a `test.html` file. \n2. Change the text on line 2 (the bit between `\u003Cstrong\u003E` and `\u003C/strong\u003E`) to anything you like!\n3. Hit Save \u0026 Submit Code, and you'll see how the `test.html` file would look in a browser. Did you see that? The `\u003Cstrong\u003E\u003C/strong\u003E` tags made our text bold!","instruction_html":"\u003Col\u003E\n\u003Cli\u003ETo the right, we have a \u003Ccode\u003Etest.html\u003C/code\u003E file. \u003C/li\u003E\n\u003Cli\u003EChange the text on \u003Ca href=\"javascript:void(0)\" class=\"line-no\" data-from=\"2\" data-to=\"\"\u003Eline 2\u003C/a\u003E (the bit between \u003Ccode\u003E\u0026lt;strong\u0026gt;\u003C/code\u003E and \u003Ccode\u003E\u0026lt;/strong\u0026gt;\u003C/code\u003E) to anything you like!\u003C/li\u003E\n\u003Cli\u003EHit Save \u0026amp; Submit Code, and you\u0026#39;ll see how the \u003Ccode\u003Etest.html\u003C/code\u003E file would look in a browser. Did you see that? The \u003Ccode\u003E\u0026lt;strong\u0026gt;\u0026lt;/strong\u0026gt;\u003C/code\u003E tags made our text bold!\u003C/li\u003E\n\u003C/ol\u003E\n","name":"Why learn HTML?","test_functions":"return true;\n","completed":true,"latest_files":[{"filename":"test.html","content":"\u003C!DOCTYPE html\u003E\n\t\u003Cstrong\u003EFeel free to change this text.\u003C/strong\u003E\n    "}],"preview_button":true,"is_current_checkpoint":false},{"_id":"502487b55da8a0000206b1f6","index":1,"code_reset":true,"default_files":[{"filename":"test.html","content":""}],"entry":"HTML stands for **HyperText Markup Language**.  **Hypertext** means \"text with links in it.\" Any time you click on a word that brings you to a new webpage, you've clicked on hypertext!\n\nA **markup language** is a programming language used to make text do more than just sit on a page: it can turn text into images, links, tables, lists, and much more. HTML is the markup language we'll be learning.\n\nWhat makes webpages pretty? That's CSS\u2014**Cascading Style Sheets**. Think of it like skin and makeup that covers the bones of HTML. We'll learn HTML first, then worry about CSS in later courses.\n\nThe first thing we should do is set up the skeleton of the page.\n\na. Always put `\u003C!DOCTYPE html\u003E` on the first line. This tells the browser what language it's reading (in this case, HTML).\nb. Always put `\u003Chtml\u003E` on the next line. This starts the HTML document.\nc. Always put `\u003C/html\u003E` on the last line. This ends the HTML document.","entry_html":"\u003Cp\u003EHTML stands for \u003Cstrong\u003EHyperText Markup Language\u003C/strong\u003E.  \u003Cstrong\u003EHypertext\u003C/strong\u003E means \u0026quot;text with links in it.\u0026quot; Any time you click on a word that brings you to a new webpage, you\u0026#39;ve clicked on hypertext!\u003C/p\u003E\n\n\u003Cp\u003EA \u003Cstrong\u003Emarkup language\u003C/strong\u003E is a programming language used to make text do more than just sit on a page: it can turn text into images, links, tables, lists, and much more. HTML is the markup language we\u0026#39;ll be learning.\u003C/p\u003E\n\n\u003Cp\u003EWhat makes webpages pretty? That\u0026#39;s CSS\u2014\u003Cstrong\u003ECascading Style Sheets\u003C/strong\u003E. Think of it like skin and makeup that covers the bones of HTML. We\u0026#39;ll learn HTML first, then worry about CSS in later courses.\u003C/p\u003E\n\n\u003Cp\u003EThe first thing we should do is set up the skeleton of the page.\u003C/p\u003E\n\n\u003Cp\u003Ea. Always put \u003Ccode\u003E\u0026lt;!DOCTYPE html\u0026gt;\u003C/code\u003E on the first line. This tells the browser what language it\u0026#39;s reading (in this case, HTML).\u003Cbr\u003E\nb. Always put \u003Ccode\u003E\u0026lt;html\u0026gt;\u003C/code\u003E on the next line. This starts the HTML document.\u003Cbr\u003E\nc. Always put \u003Ccode\u003E\u0026lt;/html\u0026gt;\u003C/code\u003E on the last line. This ends the HTML document.\u003C/p\u003E\n","external_resources":["https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"],"hint":"In HTML, the order you put things in matters! But formatting (*i.e.* empty space) doesn't matter from a technical point of view.\n\nYou *will* notice there's a pattern in how we indent each line of HTML, though. This is to aid readability and help us catch mistakes. We'll talk more about indentation later!","hint_html":"\u003Cp\u003EIn HTML, the order you put things in matters! But formatting (\u003Cem\u003Ei.e.\u003C/em\u003E empty space) doesn\u0026#39;t matter from a technical point of view.\u003C/p\u003E\n\n\u003Cp\u003EYou \u003Cem\u003Ewill\u003C/em\u003E notice there\u0026#39;s a pattern in how we indent each line of HTML, though. This is to aid readability and help us catch mistakes. We\u0026#39;ll talk more about indentation later!\u003C/p\u003E\n","instruction":"1. Go ahead and put the three lines mentioned above into `test.html`, which is now blank.\n\n2. In between the second and last line (between the `\u003Chtml\u003E` and the `\u003C/html\u003E`), feel free to write whatever message you like.","instruction_html":"\u003Col\u003E\n\u003Cli\u003E\u003Cp\u003EGo ahead and put the three lines mentioned above into \u003Ccode\u003Etest.html\u003C/code\u003E, which is now blank.\u003C/p\u003E\u003C/li\u003E\n\u003Cli\u003E\u003Cp\u003EIn between the second and last line (between the \u003Ccode\u003E\u0026lt;html\u0026gt;\u003C/code\u003E and the \u003Ccode\u003E\u0026lt;/html\u0026gt;\u003C/code\u003E), feel free to write whatever message you like.\u003C/p\u003E\u003C/li\u003E\n\u003C/ol\u003E\n","name":"HTML and CSS","test_functions":"if (code['test.html'].match(/\\\u003C\\s*!DOCTYPE html\\s*\\\u003E/i) === null) {\n  return \"Your DOCTYPE tag doesn't look quite right. Did you type it like this: \u003C!DOCTYPE html\u003E ?\";\n}\n\nif (code['test.html'].match(/\\\u003C\\s*html\\s*\\\u003E/i) === null) {\n  return 'Make sure you put in your open \u003Chtml\u003E tag!';\n}\n\nif (code['test.html'].match(/\\\u003C\\s*\\/html\\s*\\\u003E/i) === null) {\n  return 'Make sure you put in your close \u003C/html\u003E tag!';\n}\n\nreturn true;\n","completed":true,"latest_files":[{"filename":"test.html","content":"\u003C!DOCTYPE html\u003E\r\n\u003Chtml\u003E\r\n\u003Chead\u003E\r\n\t\u003Ctitle\u003E\u003C/title\u003E\r\n\t\u003Cscript\u003E\r\n\tconsole.log(\"aa\");\r\n\t\u003C/script\u003E\r\n\r\n\u003C/head\u003E\r\n\u003Cbody\u003E\r\n\u003CP\u003E\uc368\uc9c4\ub2e4\u003C/P\u003E\r\n\u003C/body\u003E\r\n\u003C/html\u003E"}],"preview_button":true,"is_current_checkpoint":true},{"_id":"50255f5f0aad73000201b5a0","index":2,"code_reset":true,"default_files":[{"filename":"index.html","content":""}],"entry":"To learn more HTML, we should learn how to talk about HTML. Already you have seen we use `\u003C\u003E`s a lot. \n\n1. Things inside `\u003C\u003E`s are called **tags**.\n2. Tags nearly always come in pairs: an opening tag and a closing tag.\n3. Example of opening tag: `\u003Chtml\u003E`\n4. Example of closing tag: `\u003C/html\u003E`\n\nYou can think of tags as being like parentheses: whenever you open one, you should close it. Tags also **nest**, so you should close them in the right order: the most recently opened tag should be the first one closed, like in the example below.\n\n    \u003Cfirst tag\u003E\u003Csecond tag\u003ESome text!\u003C/second tag\u003E\u003C/first tag\u003E\n\nThe last exercise taught us how to set up our HTML file. Everything we do now will go between `\u003Chtml\u003E` and `\u003C/html\u003E`.\n\nPractice makes perfect! One more time:","entry_html":"\u003Cp\u003ETo learn more HTML, we should learn how to talk about HTML. Already you have seen we use \u003Ccode\u003E\u0026lt;\u0026gt;\u003C/code\u003Es a lot. \u003C/p\u003E\n\n\u003Col\u003E\n\u003Cli\u003EThings inside \u003Ccode\u003E\u0026lt;\u0026gt;\u003C/code\u003Es are called \u003Cstrong\u003Etags\u003C/strong\u003E.\u003C/li\u003E\n\u003Cli\u003ETags nearly always come in pairs: an opening tag and a closing tag.\u003C/li\u003E\n\u003Cli\u003EExample of opening tag: \u003Ccode\u003E\u0026lt;html\u0026gt;\u003C/code\u003E\u003C/li\u003E\n\u003Cli\u003EExample of closing tag: \u003Ccode\u003E\u0026lt;/html\u0026gt;\u003C/code\u003E\u003C/li\u003E\n\u003C/ol\u003E\n\n\u003Cp\u003EYou can think of tags as being like parentheses: whenever you open one, you should close it. Tags also \u003Cstrong\u003Enest\u003C/strong\u003E, so you should close them in the right order: the most recently opened tag should be the first one closed, like in the example below.\u003C/p\u003E\n\n\u003Cpre\u003E\u003Ccode\u003E\u0026lt;first tag\u0026gt;\u0026lt;second tag\u0026gt;Some text!\u0026lt;/second tag\u0026gt;\u0026lt;/first tag\u0026gt;\n\u003C/code\u003E\u003C/pre\u003E\n\n\u003Cp\u003EThe last exercise taught us how to set up our HTML file. Everything we do now will go between \u003Ccode\u003E\u0026lt;html\u0026gt;\u003C/code\u003E and \u003Ccode\u003E\u0026lt;/html\u0026gt;\u003C/code\u003E.\u003C/p\u003E\n\n\u003Cp\u003EPractice makes perfect! One more time:\u003C/p\u003E\n","external_resources":["https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"],"hint":"Feel free to peek back at earlier exercises if you forget exactly what a tag looks like.","hint_html":"\u003Cp\u003EFeel free to peek back at earlier exercises if you forget exactly what a tag looks like.\u003C/p\u003E\n","instruction":"1. Put in the `\u003C!DOCTYPE HTML\u003E` tag.\n2. Put in the `\u003Chtml\u003E` opening and closing tags.\n3. Between the `\u003Chtml\u003E` tags, write whatever you like.\n4. Press Save \u0026 Submit Code to see what you've written appear on the page!","instruction_html":"\u003Col\u003E\n\u003Cli\u003EPut in the \u003Ccode\u003E\u0026lt;!DOCTYPE HTML\u0026gt;\u003C/code\u003E tag.\u003C/li\u003E\n\u003Cli\u003EPut in the \u003Ccode\u003E\u0026lt;html\u0026gt;\u003C/code\u003E opening and closing tags.\u003C/li\u003E\n\u003Cli\u003EBetween the \u003Ccode\u003E\u0026lt;html\u0026gt;\u003C/code\u003E tags, write whatever you like.\u003C/li\u003E\n\u003Cli\u003EPress Save \u0026amp; Submit Code to see what you\u0026#39;ve written appear on the page!\u003C/li\u003E\n\u003C/ol\u003E\n","name":"Basic terminology","test_functions":"if (code['index.html'].match(/\\\u003C\\s*!DOCTYPE\\s+html\\s*\\\u003E/i) === null) {\n  return 'Make sure you put in the \u003C!DOCTYPE\u003E tag!';\n}\n\nif (code['index.html'].match(/\\\u003C\\s*html\\s*\\\u003E/i) === null) {\n  return \"Don't forget to include your opening \u003Chtml\u003E tag!\";\n}\n\nif (code['index.html'].match(/\u003C\\s*\\/html\\s*\\\u003E/i) === null) {\n  return \"Don't forget to include your closing \u003C/html\u003E tag!\";\n}\n\nif (code['index.html'].match(/\\\u003C\\s*html\\s*\\\u003E[^\\\u003C]/i) === null) {\n  return \"Don't forget to write something between your \u003Chtml\u003E\u003C/html\u003E tags!\";\n}\n\nreturn true;\n","completed":false,"latest_files":[{"filename":"index.html","content":""}],"preview_button":true,"is_current_checkpoint":false},{"_id":"502bcd9afc3d780002057db2","index":3,"code_reset":true,"default_files":[{"filename":"test.html","content":"\u003C!DOCTYPE html\u003E\n\u003Chtml\u003E\n\n\n\t\n\t\n\t\n\t\n\u003C/html\u003E"}],"entry":"Everything in our HTML file will go between the opening `\u003Chtml\u003E` and closing `\u003C/html\u003E` tags.\n\nThere are always two parts to an HTML file: the head and the body. Let's start with the head.\n\nThe head contains information about your HTML file, like its title. The title is what we see in the browser's title bar or page tab. For example the title of this page is \"HTML Basics | Codecademy\".","entry_html":"\u003Cp\u003EEverything in our HTML file will go between the opening \u003Ccode\u003E\u0026lt;html\u0026gt;\u003C/code\u003E and closing \u003Ccode\u003E\u0026lt;/html\u0026gt;\u003C/code\u003E tags.\u003C/p\u003E\n\n\u003Cp\u003EThere are always two parts to an HTML file: the head and the body. Let\u0026#39;s start with the head.\u003C/p\u003E\n\n\u003Cp\u003EThe head contains information about your HTML file, like its title. The title is what we see in the browser\u0026#39;s title bar or page tab. For example the title of this page is \u0026quot;HTML Basics | Codecademy\u0026quot;.\u003C/p\u003E\n","external_resources":["https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"],"hint":"Your code should look something like this:\n\n```\n\u003Chtml\u003E\n  \u003Chead\u003E\n    \u003Ctitle\u003EMy Webpage\u003C/title\u003E\n  \u003C/head\u003E\n\u003C/html\u003E\n```","hint_html":"\u003Cp\u003EYour code should look something like this:\u003C/p\u003E\n\n\u003Cpre\u003E\u003Ccode\u003E\u0026lt;html\u0026gt;\n  \u0026lt;head\u0026gt;\n    \u0026lt;title\u0026gt;My Webpage\u0026lt;/title\u0026gt;\n  \u0026lt;/head\u0026gt;\n\u0026lt;/html\u0026gt;\n\u003C/code\u003E\u003C/pre\u003E\n","instruction":"Let's add a head and a title to our webpage. If you get stuck at any point, click \"Stuck? Get a hint!\" below for an example.\n\n1. Add an opening `\u003Chead\u003E` tag and closing `\u003C/head\u003E` tag.\n2. Between the `\u003Chead\u003E` tags, add in an opening `\u003Ctitle\u003E` tag and closing `\u003C/title\u003E` tag.\n3. Between the `\u003Ctitle\u003E` tags, write in a title for your page. For example, \"My Webpage.\" \n4. Press \"Save \u0026 Submit Code\" to continue","instruction_html":"\u003Cp\u003ELet\u0026#39;s add a head and a title to our webpage. If you get stuck at any point, click \u0026quot;Stuck? Get a hint!\u0026quot; below for an example.\u003C/p\u003E\n\n\u003Col\u003E\n\u003Cli\u003EAdd an opening \u003Ccode\u003E\u0026lt;head\u0026gt;\u003C/code\u003E tag and closing \u003Ccode\u003E\u0026lt;/head\u0026gt;\u003C/code\u003E tag.\u003C/li\u003E\n\u003Cli\u003EBetween the \u003Ccode\u003E\u0026lt;head\u0026gt;\u003C/code\u003E tags, add in an opening \u003Ccode\u003E\u0026lt;title\u0026gt;\u003C/code\u003E tag and closing \u003Ccode\u003E\u0026lt;/title\u0026gt;\u003C/code\u003E tag.\u003C/li\u003E\n\u003Cli\u003EBetween the \u003Ccode\u003E\u0026lt;title\u0026gt;\u003C/code\u003E tags, write in a title for your page. For example, \u0026quot;My Webpage.\u0026quot; \u003C/li\u003E\n\u003Cli\u003EPress \u0026quot;Save \u0026amp; Submit Code\u0026quot; to continue\u003C/li\u003E\n\u003C/ol\u003E\n","name":"Make the head","test_functions":"if (code['test.html'].match(/\\\u003C\\s*head\\s*\\\u003E/i) === null) {\n  return 'Make sure you put in your open \u003Chead\u003E tag!';\n}\n\nif (code['test.html'].match(/\\\u003C\\s*\\/\\s*head\\s*\\\u003E/i) === null) {\n  return 'Make sure you put in your close \u003C/head\u003E tag!';\n}\n\n$e('title').to.exist(\"Make sure you add in your \u003Ctitle\u003E and \u003C/title\u003E tags!\");\n\n/* Apparently this is failing some students\n   who are putting the title on a new line\n   \n$e('title').to.have.text(\"Bad to the Bonez Webpage Inc\", function() {\n  return \"Make sure your title is exactly as shown in the instructions!\";\n});*/\n\n/*var pageTitle = $('title').text();\n\nif (pageTitle.match(/bad\\s+to\\s+the\\s+bonez\\s+\\webpage\\s*,?\\s*inc/i) === null) {\n  return \"Make sure your title is 'Bad to the Bonez Webpage Inc'!\";\n}*/\n\nreturn true;\n","preview_button":true,"is_current_checkpoint":false},{"_id":"502bd1b865131c00020591c2","index":4,"code_reset":false,"default_files":[{"filename":"test.html","content":"\u003C!DOCTYPE html\u003E\n\u003Chtml\u003E\n\n\t\u003Chead\u003E\n\t\t\u003Ctitle\u003E\n\t\t\n\t\t\u003C/title\u003E\n\t\t\n\t\u003C/head\u003E\n\n\t\n\t\n\t\n\t\n\u003C/html\u003E"}],"entry":"Great job! To review, an HTML file has both a head and a body. The head is where you put information about your HTML file, like its title.\n\nThe body is where you put your content, such as text, images, and links. The content in the body is what will be visible on the actual page.\n\nThe body goes inside the `\u003Chtml\u003E` tags, right after the `\u003Chead\u003E` tags, like this:\n\n```\n\u003Chtml\u003E\n  \u003Chead\u003E\n    \u003Ctitle\u003EMy Webpage\u003C/title\u003E\n  \u003C/head\u003E\n\n  \u003Cbody\u003E\n  \u003C/body\u003E\n\u003C/html\u003E\n```","entry_html":"\u003Cp\u003EGreat job! To review, an HTML file has both a head and a body. The head is where you put information about your HTML file, like its title.\u003C/p\u003E\n\n\u003Cp\u003EThe body is where you put your content, such as text, images, and links. The content in the body is what will be visible on the actual page.\u003C/p\u003E\n\n\u003Cp\u003EThe body goes inside the \u003Ccode\u003E\u0026lt;html\u0026gt;\u003C/code\u003E tags, right after the \u003Ccode\u003E\u0026lt;head\u0026gt;\u003C/code\u003E tags, like this:\u003C/p\u003E\n\n\u003Cpre\u003E\u003Ccode\u003E\u0026lt;html\u0026gt;\n  \u0026lt;head\u0026gt;\n    \u0026lt;title\u0026gt;My Webpage\u0026lt;/title\u0026gt;\n  \u0026lt;/head\u0026gt;\n\n  \u0026lt;body\u0026gt;\n  \u0026lt;/body\u0026gt;\n\u0026lt;/html\u0026gt;\n\u003C/code\u003E\u003C/pre\u003E\n","external_resources":["https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"],"hint":"Your code should look something like this:\n\n```\n\u003Chtml\u003E\n  \u003Chead\u003E\n    \u003Ctitle\u003EMy Webpage\u003C/title\u003E\n  \u003C/head\u003E\n\n  \u003Cbody\u003E\n    \u003Cp\u003EThis is my first paragraph\u003C/p\u003E\n    \u003Cp\u003EThis is my second paragraph\u003C/p\u003E\n  \u003C/body\u003E\n\u003C/html\u003E\n```","hint_html":"\u003Cp\u003EYour code should look something like this:\u003C/p\u003E\n\n\u003Cpre\u003E\u003Ccode\u003E\u0026lt;html\u0026gt;\n  \u0026lt;head\u0026gt;\n    \u0026lt;title\u0026gt;My Webpage\u0026lt;/title\u0026gt;\n  \u0026lt;/head\u0026gt;\n\n  \u0026lt;body\u0026gt;\n    \u0026lt;p\u0026gt;This is my first paragraph\u0026lt;/p\u0026gt;\n    \u0026lt;p\u0026gt;This is my second paragraph\u0026lt;/p\u0026gt;\n  \u0026lt;/body\u0026gt;\n\u0026lt;/html\u0026gt;\n\u003C/code\u003E\u003C/pre\u003E\n","instruction":"1. Underneath the closing `\u003C/head\u003E` tag, put an opening `\u003Cbody\u003E` tag and a closing `\u003C/body\u003E` tag, like in the example above.\n2. Inside the body, create two paragraphs. Each paragraph starts with an opening `\u003Cp\u003E` tag and ends with a closing `\u003C/p\u003E` tag. We can write content in between the tags, like this:\n\n```\n\u003Cbody\u003E\n    \u003Cp\u003EHello world!\u003C/p\u003E\n\u003C/body\u003E\n```","instruction_html":"\u003Col\u003E\n\u003Cli\u003EUnderneath the closing \u003Ccode\u003E\u0026lt;/head\u0026gt;\u003C/code\u003E tag, put an opening \u003Ccode\u003E\u0026lt;body\u0026gt;\u003C/code\u003E tag and a closing \u003Ccode\u003E\u0026lt;/body\u0026gt;\u003C/code\u003E tag, like in the example above.\u003C/li\u003E\n\u003Cli\u003EInside the body, create two paragraphs. Each paragraph starts with an opening \u003Ccode\u003E\u0026lt;p\u0026gt;\u003C/code\u003E tag and ends with a closing \u003Ccode\u003E\u0026lt;/p\u0026gt;\u003C/code\u003E tag. We can write content in between the tags, like this:\u003C/li\u003E\n\u003C/ol\u003E\n\n\u003Cpre\u003E\u003Ccode\u003E\u0026lt;body\u0026gt;\n    \u0026lt;p\u0026gt;Hello world!\u0026lt;/p\u0026gt;\n\u0026lt;/body\u0026gt;\n\u003C/code\u003E\u003C/pre\u003E\n","name":"Paragraphs in the body","test_functions":"\n$e('title').not.to.be.empty(\"Make sure you put a title between your title tags.\");\n\nif (code['test.html'].toLowerCase().match(/\\\u003C\\s*body\\s*\\\u003E/i) === null){\n  return 'Make sure you put in your open \u003Cbody\u003E tag!';\n}\n\nif (code['test.html'].toLowerCase().match(/\\\u003C\\/\\s*body\\s*\\\u003E/i) === null){\n  return 'Make sure you put in your close \u003C/body\u003E tag!';\n}\n\n$e('p').to.exist(\"It looks like you didn't add any \u003Cp\u003E\u003C/p\u003E tags to the page!\");\n$e('p').to.be.above(1, function(){\n  return \"It looks like you only have one set of \u003Cp\u003E\u003C/p\u003E tags. You should have two!\";\n});\n/*var count = 0;\n$('p').each(function(i, p) {\n  if ($(p).text().trim() === \"\" \u0026\u0026 count \u003C= 1) {\n      count++;\n  }\n});\n\nif (count \u003C 2) {\n  return \"Make sure you write something between each set of \u003Cp\u003E\u003C/p\u003E tags!\";\n}*/\n\n","preview_button":true,"is_current_checkpoint":false}],"description":"Here you'll learn HTML\u2014the language websites are made from.","name":"Introduction to HTML","checkpoints_count":5,"completed_checkpoints_count":2,"is_current_project":true,"index":0,"completed":false,"author":{"_id":"4ec43e4aa78fe60001000752","handle":"Leng Lee","profile_image_url":"http://s3.amazonaws.com/codecademy-production/profile_thumbnail/53b5ac34548c35dd33003335_212831085.jpg","self_url":"/v1/users/4ec43e4aa78fe60001000752"},"continue_to_section":{"name":"Body elements","url":"http://www.codecademy.com/courses/web-beginner-en-HZA3b/1?curriculum_id=50579fb998b470000202dc8b"}},{"id":"502bdc9c1cc8ee0002001bf6","checkpoints":[{"_id":"502bdc9db879bd0002001587","index":0,"code_reset":true,"default_files":[{"filename":"test.html","content":"\u003C!DOCTYPE html\u003E\n\u003Chtml\u003E\n\n\t\u003Chead\u003E\n\t\t\u003Ctitle\u003E\n\t\t\tHeadings \u0026 Paragraphs\n\t\t\u003C/title\u003E\n\t\t\n\t\u003C/head\u003E\n\t\u003Cbody\u003E\n\t\t\n\t\t\n\t\t\n\t\t\n\t\u003C/body\u003E\n\u003C/html\u003E"}],"entry":"We're definitely making good progress! We've learned when and why we use HTML. We've also learned how to:\n\na. Set up an HTML file with tags\nb. Title the webpage (in the `\u003Chead\u003E`)\nc. Create paragraphs (in the `\u003Cbody\u003E` with `\u003Cp\u003E` tags)\n\nThe next step is to give our paragraphs headings using **heading tags**. Let's start with the `\u003Ch1\u003E` tag. The content between this tag will be the biggest!","entry_html":"\u003Cp\u003EWe\u0026#39;re definitely making good progress! We\u0026#39;ve learned when and why we use HTML. We\u0026#39;ve also learned how to:\u003C/p\u003E\n\n\u003Cp\u003Ea. Set up an HTML file with tags\u003Cbr\u003E\nb. Title the webpage (in the \u003Ccode\u003E\u0026lt;head\u0026gt;\u003C/code\u003E)\u003Cbr\u003E\nc. Create paragraphs (in the \u003Ccode\u003E\u0026lt;body\u0026gt;\u003C/code\u003E with \u003Ccode\u003E\u0026lt;p\u0026gt;\u003C/code\u003E tags)\u003C/p\u003E\n\n\u003Cp\u003EThe next step is to give our paragraphs headings using \u003Cstrong\u003Eheading tags\u003C/strong\u003E. Let\u0026#39;s start with the \u003Ccode\u003E\u0026lt;h1\u0026gt;\u003C/code\u003E tag. The content between this tag will be the biggest!\u003C/p\u003E\n","external_resources":["https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"],"hint":"Remember: paragraphs require `\u003Cp\u003E\u003C/p\u003E` tags!","hint_html":"\u003Cp\u003ERemember: paragraphs require \u003Ccode\u003E\u0026lt;p\u0026gt;\u0026lt;/p\u0026gt;\u003C/code\u003E tags!\u003C/p\u003E\n","instruction":"1. In the body section, create a heading. To do this, create an `\u003Ch1\u003E` tag. \n2. Add content.\n3. Close the element with a closing tag `\u003C/h1\u003E`. (Your content should now be between `\u003Ch1\u003E` and `\u003C/h1\u003E`.) \n4. Underneath the heading tags, create two paragraphs using `\u003Cp\u003E` tags with whatever content you like.","instruction_html":"\u003Col\u003E\n\u003Cli\u003EIn the body section, create a heading. To do this, create an \u003Ccode\u003E\u0026lt;h1\u0026gt;\u003C/code\u003E tag. \u003C/li\u003E\n\u003Cli\u003EAdd content.\u003C/li\u003E\n\u003Cli\u003EClose the element with a closing tag \u003Ccode\u003E\u0026lt;/h1\u0026gt;\u003C/code\u003E. (Your content should now be between \u003Ccode\u003E\u0026lt;h1\u0026gt;\u003C/code\u003E and \u003Ccode\u003E\u0026lt;/h1\u0026gt;\u003C/code\u003E.) \u003C/li\u003E\n\u003Cli\u003EUnderneath the heading tags, create two paragraphs using \u003Ccode\u003E\u0026lt;p\u0026gt;\u003C/code\u003E tags with whatever content you like.\u003C/li\u003E\n\u003C/ol\u003E\n","name":"Paragraphs and headings","test_functions":"$e('h1').to.exist('Make sure to add your h1 tags!');\n$e('h1').not.to.be.empty('Make sure to write a heading between your \u003Ch1\u003E and \u003C/h1\u003E tags.');\n$e('p').to.exist(\"It looks like you haven't added any \u003Cp\u003E\u003C/p\u003E tags to the page!\");\n$e('p').to.be.above(1, function() {\n  return \"It looks like you only have one set of \u003Cp\u003E\u003C/p\u003E tags. You should have two!\";\n});\n$e('p').not.to.be.empty(\"Make sure you write something between each set of \u003Cp\u003E\u003C/p\u003E tags!\");\n","preview_button":true,"is_current_checkpoint":false},{"_id":"502bfc7be1eeb20002000b2a","index":1,"code_reset":false,"default_files":[{"filename":"test.html","content":"\u003C!DOCTYPE html\u003E\n\u003Chtml\u003E\n\t\u003Chead\u003E\n\t\t\u003Ctitle\u003E\u003C/title\u003E\n\t\u003C/head\u003E\n\t\u003Cbody\u003E\u003C/body\u003E\n\u003C/html\u003E"}],"entry":"HTML actually lets us have more than one heading size. There are six heading sizes, where `\u003Ch1\u003E` is the boss and `\u003Ch6\u003E` is puny!\n\n* `\u003Ch1\u003E` - The CEO\n* `\u003Ch2\u003E` - VP\n* `\u003Ch3\u003E` - Director \n* `\u003Ch4\u003E` - Middle management\n* `\u003Ch5\u003E` - Lowly assistant\n* `\u003Ch6\u003E` - Gets coffee for everyone\n\nBelow we'll ask you to add headings of various sizes. Feel free to write whatever you like for the headings!","entry_html":"\u003Cp\u003EHTML actually lets us have more than one heading size. There are six heading sizes, where \u003Ccode\u003E\u0026lt;h1\u0026gt;\u003C/code\u003E is the boss and \u003Ccode\u003E\u0026lt;h6\u0026gt;\u003C/code\u003E is puny!\u003C/p\u003E\n\n\u003Cul\u003E\n\u003Cli\u003E\u003Ccode\u003E\u0026lt;h1\u0026gt;\u003C/code\u003E - The CEO\u003C/li\u003E\n\u003Cli\u003E\u003Ccode\u003E\u0026lt;h2\u0026gt;\u003C/code\u003E - VP\u003C/li\u003E\n\u003Cli\u003E\u003Ccode\u003E\u0026lt;h3\u0026gt;\u003C/code\u003E - Director \u003C/li\u003E\n\u003Cli\u003E\u003Ccode\u003E\u0026lt;h4\u0026gt;\u003C/code\u003E - Middle management\u003C/li\u003E\n\u003Cli\u003E\u003Ccode\u003E\u0026lt;h5\u0026gt;\u003C/code\u003E - Lowly assistant\u003C/li\u003E\n\u003Cli\u003E\u003Ccode\u003E\u0026lt;h6\u0026gt;\u003C/code\u003E - Gets coffee for everyone\u003C/li\u003E\n\u003C/ul\u003E\n\n\u003Cp\u003EBelow we\u0026#39;ll ask you to add headings of various sizes. Feel free to write whatever you like for the headings!\u003C/p\u003E\n","external_resources":["https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"],"hint":null,"hint_html":null,"instruction":"1. Your code currently has one `\u003Ch1\u003E` heading and two paragraphs.\n2. Add an `\u003Ch3\u003E` heading before the second paragraph.\n3. Add an `\u003Ch5\u003E` heading after the second paragraph, and then add a third paragraph after this heading.","instruction_html":"\u003Col\u003E\n\u003Cli\u003EYour code currently has one \u003Ccode\u003E\u0026lt;h1\u0026gt;\u003C/code\u003E heading and two paragraphs.\u003C/li\u003E\n\u003Cli\u003EAdd an \u003Ccode\u003E\u0026lt;h3\u0026gt;\u003C/code\u003E heading before the second paragraph.\u003C/li\u003E\n\u003Cli\u003EAdd an \u003Ccode\u003E\u0026lt;h5\u0026gt;\u003C/code\u003E heading after the second paragraph, and then add a third paragraph after this heading.\u003C/li\u003E\n\u003C/ol\u003E\n","name":"More about headings!","test_functions":"$e('h3').to.exist(\"Make sure you include your \u003Ch3\u003E\u003C/h3\u003E tags!\");\n$e('h5').to.exist(\"Make sure you include your \u003Ch5\u003E\u003C/h5\u003E tags!\");\n$e('p').to.be.above(2, function() {\n  return \"Don't forget to add that third set of \u003Cp\u003E\u003C/p\u003E tags!\";\n});\n","preview_button":true,"is_current_checkpoint":false},{"_id":"502c8acad84343000202f43c","index":2,"code_reset":false,"default_files":[{"filename":"test.html","content":"\u003C!DOCTYPE html\u003E\n\u003Chtml\u003E\n\t\u003Chead\u003E\n\t\t\u003Ctitle\u003E\u003C/title\u003E\n\t\u003C/head\u003E\n\t\u003Cbody\u003E\u003C/body\u003E\n\u003C/html\u003E"}],"entry":"Nice work! \n\nGiven that there are six heading sizes altogether, we should make use of all six.","entry_html":"\u003Cp\u003ENice work! \u003C/p\u003E\n\n\u003Cp\u003EGiven that there are six heading sizes altogether, we should make use of all six.\u003C/p\u003E\n","external_resources":["https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"],"hint":null,"hint_html":null,"instruction":"1. Add three more headings to the code, making use of `\u003Ch2\u003E`, `\u003Ch4\u003E` and `\u003Ch6\u003E`. Make sure to close all your tags!\n2. Under each heading, add a short paragraph. Dont forget paragraphs need opening and closing `\u003Cp\u003E\u003C/p\u003E` tags!","instruction_html":"\u003Col\u003E\n\u003Cli\u003EAdd three more headings to the code, making use of \u003Ccode\u003E\u0026lt;h2\u0026gt;\u003C/code\u003E, \u003Ccode\u003E\u0026lt;h4\u0026gt;\u003C/code\u003E and \u003Ccode\u003E\u0026lt;h6\u0026gt;\u003C/code\u003E. Make sure to close all your tags!\u003C/li\u003E\n\u003Cli\u003EUnder each heading, add a short paragraph. Dont forget paragraphs need opening and closing \u003Ccode\u003E\u0026lt;p\u0026gt;\u0026lt;/p\u0026gt;\u003C/code\u003E tags!\u003C/li\u003E\n\u003C/ol\u003E\n","name":"Using every heading","test_functions":"$e('h2').to.exist(\"Make sure to include your \u003Ch2\u003E\u003C/h2\u003E tags!\");\n$e('h2').not.to.be.empty(\"It looks like there's no text between your \u003Ch2\u003E\u003C/h2\u003E tags.\");\n$e('h4').to.exist(\"Make sure to include your \u003Ch4\u003E\u003C/h4\u003E tags!\");\n$e('h4').not.to.be.empty(\"It looks like there's no text between your \u003Ch4\u003E\u003C/h4\u003E tags.\");\n$e('h6').to.exist(\"Make sure to include your \u003Ch6\u003E\u003C/h6\u003E tags!\");\n$e('h6').not.to.be.empty(\"It looks like there's no text between your \u003Ch6\u003E\u003C/h6\u003E tags.\");\n$e('p').to.be.above(5, function() {\n  return \"Did you remember to add all three extra sets of \u003Cp\u003E\u003C/p\u003E tags?\";\n});\n","preview_button":true,"is_current_checkpoint":false}],"description":"Now that you know how to set up an HTML document, it's time to learn about all the things you can display in one.","name":"Body elements","checkpoints_count":3,"completed_checkpoints_count":0,"is_current_project":false,"index":1,"completed":false,"author":{"_id":"4ec43e4aa78fe60001000752","handle":"Leng Lee","profile_image_url":"http://s3.amazonaws.com/codecademy-production/profile_thumbnail/53b5ac34548c35dd33003335_212831085.jpg","self_url":"/v1/users/4ec43e4aa78fe60001000752"},"continue_to_section":{"name":"Adding images to your site!","url":"http://www.codecademy.com/courses/web-beginner-en-HZA3b/2?curriculum_id=50579fb998b470000202dc8b"}},{"id":"502c8b9ac9079d000202de15","checkpoints":[{"_id":"502c8b9a07533a000202f282","index":0,"code_reset":false,"default_files":[{"filename":"test.html","content":"\u003C!DOCTYPE html\u003E\n\u003Chtml\u003E\n\t\u003Chead\u003E\n\t\t\u003Ctitle\u003E\u003C/title\u003E\n\t\u003C/head\u003E\n\t\u003Cbody\u003E\n\t\t\n\t\t\n\t\t\n\t\t\n\t\u003C/body\u003E\n\u003C/html\u003E"}],"entry":"You've done an awesome job! Here's a quick summary of things we've learned:\n\n1.  HTML is used to give websites structure.\n2.  We open HTML files using a browser, and the browser **renders** (shows us) the file.\n3.  HTML files have a `\u003Chead\u003E` and a `\u003Cbody\u003E` (just like you!)\n4.  In the head, we have the `\u003Ctitle\u003E` tags, and we use these to specify the webpage's name.\n5.  How to make headings and paragraphs.","entry_html":"\u003Cp\u003EYou\u0026#39;ve done an awesome job! Here\u0026#39;s a quick summary of things we\u0026#39;ve learned:\u003C/p\u003E\n\n\u003Col\u003E\n\u003Cli\u003E HTML is used to give websites structure.\u003C/li\u003E\n\u003Cli\u003E We open HTML files using a browser, and the browser \u003Cstrong\u003Erenders\u003C/strong\u003E (shows us) the file.\u003C/li\u003E\n\u003Cli\u003E HTML files have a \u003Ccode\u003E\u0026lt;head\u0026gt;\u003C/code\u003E and a \u003Ccode\u003E\u0026lt;body\u0026gt;\u003C/code\u003E (just like you!)\u003C/li\u003E\n\u003Cli\u003E In the head, we have the \u003Ccode\u003E\u0026lt;title\u0026gt;\u003C/code\u003E tags, and we use these to specify the webpage\u0026#39;s name.\u003C/li\u003E\n\u003Cli\u003E How to make headings and paragraphs.\u003C/li\u003E\n\u003C/ol\u003E\n","external_resources":["https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"],"hint":null,"hint_html":null,"instruction":"1. Add a title between the `\u003Ctitle\u003E` tags.\n2. Create a `\u003Ch3\u003E` sized heading in the body. Make your heading say anything you want! (Just don't forget to close it.)\n3. Create three paragraphs using `\u003Cp\u003E` tags and fill them with content (*e.g.* about cars, your pet, favorite city to travel\u2014whatever you like!)","instruction_html":"\u003Col\u003E\n\u003Cli\u003EAdd a title between the \u003Ccode\u003E\u0026lt;title\u0026gt;\u003C/code\u003E tags.\u003C/li\u003E\n\u003Cli\u003ECreate a \u003Ccode\u003E\u0026lt;h3\u0026gt;\u003C/code\u003E sized heading in the body. Make your heading say anything you want! (Just don\u0026#39;t forget to close it.)\u003C/li\u003E\n\u003Cli\u003ECreate three paragraphs using \u003Ccode\u003E\u0026lt;p\u0026gt;\u003C/code\u003E tags and fill them with content (\u003Cem\u003Ee.g.\u003C/em\u003E about cars, your pet, favorite city to travel\u2014whatever you like!)\u003C/li\u003E\n\u003C/ol\u003E\n","name":"Mid-lesson breather","test_functions":"$e('title').not.to.be.empty('Make sure to put a title between your \u003Ctitle\u003E\u003C/title\u003E tags.');\n$e('h3').to.exist('Make sure you include your \u003Ch3\u003E\u003C/h3\u003E tags!');\n$e('p').to.exist('Make sure you include \u003Cp\u003E\u003C/p\u003E tags!');\n$e('p').to.be.above(2, function() {\n  return \"Make sure you have three paragraphs with three separate sets of \u003Cp\u003E\u003C/p\u003E tags!\"\n});\n","preview_button":true,"is_current_checkpoint":false},{"_id":"52fd2681548c3536b900120d","index":1,"code_reset":true,"default_files":[{"filename":"index.html","content":"\u003C!DOCTYPE html\u003E\n\u003Chtml\u003E\n\t\u003Chead\u003E\n\t\t\u003Ctitle\u003E\u003C/title\u003E\n\t\u003C/head\u003E\n\t\u003Cbody\u003E\n\t    \n\t\u003C/body\u003E\n\u003C/html\u003E"}],"entry":"What if you wanted to send the user to another part of your website, or another website altogether? You use hyperlinks, or links for short! \n\n```html\n\u003Ca href=\"http://www.codecademy.com\"\u003EMy Favorite Site!\u003C/a\u003E\n```\n\n1. First, there's an opening `\u003Ca\u003E` tag and that tag has an attribute called `href`. The `href` value tells your link where you want it to go, in this case http://www.codecademy.com.\n2. Then you have a description of your link between your opening `\u003Ca\u003E` and your closing `\u003C/a\u003E` tags. This is what you will be able to click on.\n3. Finally, you have your closing `\u003C/a\u003E` tag.\n","entry_html":"\u003Cp\u003EWhat if you wanted to send the user to another part of your website, or another website altogether? You use hyperlinks, or links for short! \u003C/p\u003E\n\n\u003Cpre\u003E\u003Ccode class=\"html\"\u003E\u0026lt;a href=\u0026quot;http://www.codecademy.com\u0026quot;\u0026gt;My Favorite Site!\u0026lt;/a\u0026gt;\n\u003C/code\u003E\u003C/pre\u003E\n\n\u003Col\u003E\n\u003Cli\u003EFirst, there\u0026#39;s an opening \u003Ccode\u003E\u0026lt;a\u0026gt;\u003C/code\u003E tag and that tag has an attribute called \u003Ccode\u003Ehref\u003C/code\u003E. The \u003Ccode\u003Ehref\u003C/code\u003E value tells your link where you want it to go, in this case \u003Ca href=\"http://www.codecademy.com\"\u003Ehttp://www.codecademy.com\u003C/a\u003E.\u003C/li\u003E\n\u003Cli\u003EThen you have a description of your link between your opening \u003Ccode\u003E\u0026lt;a\u0026gt;\u003C/code\u003E and your closing \u003Ccode\u003E\u0026lt;/a\u0026gt;\u003C/code\u003E tags. This is what you will be able to click on.\u003C/li\u003E\n\u003Cli\u003EFinally, you have your closing \u003Ccode\u003E\u0026lt;/a\u0026gt;\u003C/code\u003E tag.\u003C/li\u003E\n\u003C/ol\u003E\n","external_resources":["https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"],"hint":null,"hint_html":null,"instruction":"1. In the body section, create a link. To do this, create an `\u003Ca\u003E` tag. Point your link to a website by setting the value of the `href` attribute\n2. Add a description of your link\n3. Close the element with a closing tag `\u003C/a\u003E`","instruction_html":"\u003Col\u003E\n\u003Cli\u003EIn the body section, create a link. To do this, create an \u003Ccode\u003E\u0026lt;a\u0026gt;\u003C/code\u003E tag. Point your link to a website by setting the value of the \u003Ccode\u003Ehref\u003C/code\u003E attribute\u003C/li\u003E\n\u003Cli\u003EAdd a description of your link\u003C/li\u003E\n\u003Cli\u003EClose the element with a closing tag \u003Ccode\u003E\u0026lt;/a\u0026gt;\u003C/code\u003E\u003C/li\u003E\n\u003C/ol\u003E\n","name":" You're going places!","test_functions":"$e('a').to.exist(\"Don't forget to include your \u003Ca\u003E\u003C/a\u003E tags!\");\n\nvar anchor = $('a:first');\nif( anchor.attr('href') === undefined || anchor.attr('href').length === 0 )\n    return 'Don\\'t forget to make your href! Check out the example.';\n\nvar tagClosed = code.html.match(/\u003C\\/a\u003E/);\nif( tagClosed == undefined || tagClosed.length \u003C= 0 )\n    return 'Don\\'t forget to close your \u003Ca\u003E tag look back at the example.';\n\nif( $.trim(anchor.text()).length === 0 )\n    return 'Don\\'t forget to add a description! Check out the example.';\n\n     \nreturn true;","preview_button":true,"is_current_checkpoint":false},{"_id":"502d3e3740b50f000204e2e1","index":2,"code_reset":true,"default_files":[{"filename":"index.html","content":"\u003C!DOCTYPE html\u003E\n\u003Chtml\u003E\n\t\u003Chead\u003E\n\t\t\u003Ctitle\u003E\u003C/title\u003E\n\t\u003C/head\u003E\n\t\u003Cbody\u003E\n\t\t\u003Cimg src=\"http://s3.amazonaws.com/codecademy-blog/assets/f3a16fb6.jpg\" /\u003E\n\t\u003C/body\u003E\n\u003C/html\u003E"}],"entry":"You can add images to your websites to make them look fancy. \n\nWe use an image tag, like so: `\u003Cimg\u003E`. This tag is a bit different from the others. Instead of putting the content between the tags, you tell the tag where to get the picture using `src`. It's also different because there is no ending tag. It has `/` in the tag to close it: `\u003Cimg src=\"url\" /\u003E`.\n\nCheck out the tag to the right\u2014it adds a picture of a rubber duck to the page! (You can see it by clicking on the Preview button.)\n\nSee the web address (or **URL**) after `src=`? It's `\"http://s3.amazonaws.com/codecademy-blog/assets/f3a16fb6.jpg\"`. That tells the `\u003Cimg\u003E` tag where to get the picture from!\n\nEvery image on the web has its own image URL. Simply right-click on an image and choose \"Copy image URL.\" Paste that URL in quotes after `src=` to insert with your `\u003Cimg\u003E` tag.","entry_html":"\u003Cp\u003EYou can add images to your websites to make them look fancy. \u003C/p\u003E\n\n\u003Cp\u003EWe use an image tag, like so: \u003Ccode\u003E\u0026lt;img\u0026gt;\u003C/code\u003E. This tag is a bit different from the others. Instead of putting the content between the tags, you tell the tag where to get the picture using \u003Ccode\u003Esrc\u003C/code\u003E. It\u0026#39;s also different because there is no ending tag. It has \u003Ccode\u003E/\u003C/code\u003E in the tag to close it: \u003Ccode\u003E\u0026lt;img src=\u0026quot;url\u0026quot; /\u0026gt;\u003C/code\u003E.\u003C/p\u003E\n\n\u003Cp\u003ECheck out the tag to the right\u2014it adds a picture of a rubber duck to the page! (You can see it by clicking on the Preview button.)\u003C/p\u003E\n\n\u003Cp\u003ESee the web address (or \u003Cstrong\u003EURL\u003C/strong\u003E) after \u003Ccode\u003Esrc=\u003C/code\u003E? It\u0026#39;s \u003Ccode\u003E\u0026quot;http://s3.amazonaws.com/codecademy-blog/assets/f3a16fb6.jpg\u0026quot;\u003C/code\u003E. That tells the \u003Ccode\u003E\u0026lt;img\u0026gt;\u003C/code\u003E tag where to get the picture from!\u003C/p\u003E\n\n\u003Cp\u003EEvery image on the web has its own image URL. Simply right-click on an image and choose \u0026quot;Copy image URL.\u0026quot; Paste that URL in quotes after \u003Ccode\u003Esrc=\u003C/code\u003E to insert with your \u003Ccode\u003E\u0026lt;img\u0026gt;\u003C/code\u003E tag.\u003C/p\u003E\n","external_resources":["https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"],"hint":null,"hint_html":null,"instruction":"Add a second image below the first one. (Make sure it's before the closing `\u003Cbody\u003E` tag!) \n\nIf you can't think of a good picture, use this ninja:\n\n~~~\nhttp://s3.amazonaws.com/codecademy-blog/assets/ninja_zpsa5dbe37a.jpg\n~~~","instruction_html":"\u003Cp\u003EAdd a second image below the first one. (Make sure it\u0026#39;s before the closing \u003Ccode\u003E\u0026lt;body\u0026gt;\u003C/code\u003E tag!) \u003C/p\u003E\n\n\u003Cp\u003EIf you can\u0026#39;t think of a good picture, use this ninja:\u003C/p\u003E\n\n\u003Cpre\u003E\u003Ccode\u003Ehttp://s3.amazonaws.com/codecademy-blog/assets/ninja_zpsa5dbe37a.jpg\n\u003C/code\u003E\u003C/pre\u003E\n","name":"Adding images","test_functions":"$e('img').to.be.above(1, function() {\n  return \"Make sure to put in a second \u003Cimg /\u003E tag!\";\n});\n\nvar html = code['index.html'];\nvar fullImage = '\u003Cimg\\\\s+src=\"https?:\\\\/\\\\/.*?\" \\\\/\u003E';\nvar starAcrossNewline = '[\\\\s\\\\S]*?';\nvar full = new RegExp(fullImage + starAcrossNewline + fullImage, 'i');\n\nif (html.match(full)) {\n    return true;\n}\n\nvar missingSrc = /\u003Cimg(?!\\s+src)/i;\nif (html.match(missingSrc)) {\n    return 'Your `\u003Cimg src=\"...\" /\u003E` tag is missing the `src` attribute.'\n}\n\nvar forgettingClosingSlash = /\u003Cimg[^\u003E]*?[^\\/]\u003E/i;\nif (html.match(forgettingClosingSlash)) {\n    return 'You need to close your image tag with a slash, like this: \u003Cimg src=\"...\" /\u003E';\n}\n\nvar usingApostrophes = /src='/i;\nif (html.match(usingApostrophes)) {\n    return 'Your `\u003Cimg src=\"...\" /\u003E` tag should use double-quotation marks instead of apostrophes.';\n}\n\nvar validUrls = /src=\"https?:\\/\\/.*?\"[\\s\\S]+src=\"https?:\\/\\/.*?\"/i;\nif (!html.match(validUrls)) {\n    return 'Your \u003Cimg src=\"...\" /\u003E tag needs an image url in place of the `...`';\n}\n\nreturn false;","preview_button":true,"is_current_checkpoint":false},{"_id":"502d42dc1bf3d7000205208a","index":3,"code_reset":false,"default_files":[{"filename":"index.html","content":""}],"entry":"Good work! Now you know how to add links and images to your website. Why not make that image a link? For example:\n\n```html\n\u003Ca href=\"http://www.codecademy.com/\"\u003E\n\t\u003Cimg src=\"http://s3.amazonaws.com/codecademy-blog/assets/f3a16fb6.jpg\"/\u003E\n\u003C/a\u003E\n```\n\n1. First we open our `\u003Ca\u003E` tag and point the `href` to http://www.codecademy.com/ again.\n2. But this time, instead of using text inside the `\u003Ca\u003E` tag, we use an `\u003Cimg\u003E` tag.\n3. Finally, we have our closing `\u003C/a\u003E` tag.\n\nNow when you click on the yellow duck, you will be taken to http://www.codecademy.com!\n\nPlacing one HTML tag inside of another is called **nesting**.","entry_html":"\u003Cp\u003EGood work! Now you know how to add links and images to your website. Why not make that image a link? For example:\u003C/p\u003E\n\n\u003Cpre\u003E\u003Ccode class=\"html\"\u003E\u0026lt;a href=\u0026quot;http://www.codecademy.com/\u0026quot;\u0026gt;\n    \u0026lt;img src=\u0026quot;http://s3.amazonaws.com/codecademy-blog/assets/f3a16fb6.jpg\u0026quot;/\u0026gt;\n\u0026lt;/a\u0026gt;\n\u003C/code\u003E\u003C/pre\u003E\n\n\u003Col\u003E\n\u003Cli\u003EFirst we open our \u003Ccode\u003E\u0026lt;a\u0026gt;\u003C/code\u003E tag and point the \u003Ccode\u003Ehref\u003C/code\u003E to \u003Ca href=\"http://www.codecademy.com/\"\u003Ehttp://www.codecademy.com/\u003C/a\u003E again.\u003C/li\u003E\n\u003Cli\u003EBut this time, instead of using text inside the \u003Ccode\u003E\u0026lt;a\u0026gt;\u003C/code\u003E tag, we use an \u003Ccode\u003E\u0026lt;img\u0026gt;\u003C/code\u003E tag.\u003C/li\u003E\n\u003Cli\u003EFinally, we have our closing \u003Ccode\u003E\u0026lt;/a\u0026gt;\u003C/code\u003E tag.\u003C/li\u003E\n\u003C/ol\u003E\n\n\u003Cp\u003ENow when you click on the yellow duck, you will be taken to \u003Ca href=\"http://www.codecademy.com\"\u003Ehttp://www.codecademy.com\u003C/a\u003E!\u003C/p\u003E\n\n\u003Cp\u003EPlacing one HTML tag inside of another is called \u003Cstrong\u003Enesting\u003C/strong\u003E.\u003C/p\u003E\n","external_resources":["https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"],"hint":"Make sure you put in a full web address, like `\"http://www.google.com\"`. Oh yeah\u2014make sure to put the address in quotes!\n\nYour code should look something like this:\n```\n\u003Ca href=\"LINK url\"\u003E\n    \u003Cimg src=\"IMAGE url\" /\u003E\n\u003C/a\u003E\n```\n\nTry making one image link to `\"http://codecademy.com\"` and then click on it to see the link in action. If you use another URL there is a chance that clicking on it won't work because of security settings on the website!","hint_html":"\u003Cp\u003EMake sure you put in a full web address, like \u003Ccode\u003E\u0026quot;http://www.google.com\u0026quot;\u003C/code\u003E. Oh yeah\u2014make sure to put the address in quotes!\u003C/p\u003E\n\n\u003Cp\u003EYour code should look something like this:\u003C/p\u003E\n\n\u003Cpre\u003E\u003Ccode\u003E\u0026lt;a href=\u0026quot;LINK url\u0026quot;\u0026gt;\n    \u0026lt;img src=\u0026quot;IMAGE url\u0026quot; /\u0026gt;\n\u0026lt;/a\u0026gt;\n\u003C/code\u003E\u003C/pre\u003E\n\n\u003Cp\u003ETry making one image link to \u003Ccode\u003E\u0026quot;http://codecademy.com\u0026quot;\u003C/code\u003E and then click on it to see the link in action. If you use another URL there is a chance that clicking on it won\u0026#39;t work because of security settings on the website!\u003C/p\u003E\n","instruction":"1. In the body section, create an `\u003Ca\u003E` tag.\n2. Choose a website to point your link to, like `\u003Ca href=\"http://www.codecademy.com\"\u003E`.\n3. Now create your `\u003Cimg\u003E` tag between your opening `\u003Ca\u003E` tag and closing `\u003C/a\u003E` tag. Don't forget the `src`!\n4. Finally, close your `\u003C/a\u003E` tag after your `\u003Cimg\u003E` tag.","instruction_html":"\u003Col\u003E\n\u003Cli\u003EIn the body section, create an \u003Ccode\u003E\u0026lt;a\u0026gt;\u003C/code\u003E tag.\u003C/li\u003E\n\u003Cli\u003EChoose a website to point your link to, like \u003Ccode\u003E\u0026lt;a href=\u0026quot;http://www.codecademy.com\u0026quot;\u0026gt;\u003C/code\u003E.\u003C/li\u003E\n\u003Cli\u003ENow create your \u003Ccode\u003E\u0026lt;img\u0026gt;\u003C/code\u003E tag between your opening \u003Ccode\u003E\u0026lt;a\u0026gt;\u003C/code\u003E tag and closing \u003Ccode\u003E\u0026lt;/a\u0026gt;\u003C/code\u003E tag. Don\u0026#39;t forget the \u003Ccode\u003Esrc\u003C/code\u003E!\u003C/li\u003E\n\u003Cli\u003EFinally, close your \u003Ccode\u003E\u0026lt;/a\u0026gt;\u003C/code\u003E tag after your \u003Ccode\u003E\u0026lt;img\u0026gt;\u003C/code\u003E tag.\u003C/li\u003E\n\u003C/ol\u003E\n","name":"Click that image","test_functions":"$e('a').to.exist(\"Don't forget to include your \u003Ca\u003E\u003C/a\u003E tags!\");\n$e('a \u003E img').to.exist(\"Make sure your \u003Cimg /\u003E tag is inside your \u003Ca\u003E\u003C/a\u003E tags.\");\nif (typeof $('a').attr('href') === 'undefined') {\n    return \"Make sure your \u003Ca\u003E tag has a href attribute inside the opening tag!\"    \n}\n\nif ($('img').attr('src') === undefined) {\n    return \"Make sure your \u003Cimg\u003E tag has a src attribute inside the opening tag!\"    \n}\n\nvar tagClosed = code.html.match(/\u003C\\/a\u003E/);\nif( tagClosed == undefined || tagClosed.length \u003C= 0 )\n    return 'Don\\'t forget to close your \u003Ca\u003E tag. You can look back at the example.';\n\n\nreturn true","preview_button":true,"is_current_checkpoint":false},{"_id":"5032da16c496130002012ab9","index":4,"code_reset":true,"default_files":[{"filename":"index.html","content":"\u003C!DOCTYPE html\u003E\n\u003Chtml\u003E\n\t\u003Chead\u003E\n\t\t\u003Ctitle\u003E\u003C/title\u003E\n\t\u003C/head\u003E\n\t\u003Cbody\u003E\n\t\t\n\t\t\n\t\t\n\t\t\n\t\u003C/body\u003E\n\u003C/html\u003E"}],"entry":"Good work! Let's make sure you really understand images and links before we move on to the review.","entry_html":"\u003Cp\u003EGood work! Let\u0026#39;s make sure you really understand images and links before we move on to the review.\u003C/p\u003E\n","external_resources":["https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"],"hint":"Images work like this:\n\n    \u003Cimg src=\"picture URL\" /\u003E\n\nLinks work like this:\n\n    \u003Ca href=\"website URL\"\u003E\u003C/a\u003E\n\nYou can put a link around an image:\n```\n\u003Ca href=\"website URL\"\u003E\u003Cimg src=\"picture URL\" /\u003E\u003C/a\u003E\n```","hint_html":"\u003Cp\u003EImages work like this:\u003C/p\u003E\n\n\u003Cpre\u003E\u003Ccode\u003E\u0026lt;img src=\u0026quot;picture URL\u0026quot; /\u0026gt;\n\u003C/code\u003E\u003C/pre\u003E\n\n\u003Cp\u003ELinks work like this:\u003C/p\u003E\n\n\u003Cpre\u003E\u003Ccode\u003E\u0026lt;a href=\u0026quot;website URL\u0026quot;\u0026gt;\u0026lt;/a\u0026gt;\n\u003C/code\u003E\u003C/pre\u003E\n\n\u003Cp\u003EYou can put a link around an image:\u003C/p\u003E\n\n\u003Cpre\u003E\u003Ccode\u003E\u0026lt;a href=\u0026quot;website URL\u0026quot;\u0026gt;\u0026lt;img src=\u0026quot;picture URL\u0026quot; /\u0026gt;\u0026lt;/a\u0026gt;\n\u003C/code\u003E\u003C/pre\u003E\n","instruction":"1. Between the `\u003Cbody\u003E` tags, add two images using the `\u003Cimg\u003E` tag. One should be a link; the other should not. The link can go anywhere you want.\n2. After your two images, create a link that's just a line of text. It can link anywhere you want.\n\nCheck the Hint if you need help.","instruction_html":"\u003Col\u003E\n\u003Cli\u003EBetween the \u003Ccode\u003E\u0026lt;body\u0026gt;\u003C/code\u003E tags, add two images using the \u003Ccode\u003E\u0026lt;img\u0026gt;\u003C/code\u003E tag. One should be a link; the other should not. The link can go anywhere you want.\u003C/li\u003E\n\u003Cli\u003EAfter your two images, create a link that\u0026#39;s just a line of text. It can link anywhere you want.\u003C/li\u003E\n\u003C/ol\u003E\n\n\u003Cp\u003ECheck the Hint if you need help.\u003C/p\u003E\n","name":"Images and links","test_functions":"$e('img').to.be.above(1, function() {\n  return \"Did you remember to include two images?\";\n});\n$e('a \u003E img').to.exist(\"Make sure at least one of your images is also a link!\");\n$e('a').to.be.above(1, function() {\n  return \"Make sure you have 3 elements. One should be a just a link, one should be just a picture and one should be a picture with a link!\";\n});\n","preview_button":true,"is_current_checkpoint":false},{"_id":"5032da303327c200020133a8","index":5,"code_reset":false,"default_files":[{"filename":"index.html","content":"\u003C!DOCTYPE html\u003E\n\u003Chtml\u003E\n\t\u003Chead\u003E\n\t\t\u003Ctitle\u003E\u003C/title\u003E\n\t\u003C/head\u003E\n\t\u003Cbody\u003E\u003C/body\u003E\n\u003C/html\u003E"}],"entry":"Well done! You now know the basics of creating a web page. If you're feeling lucky, go ahead and tackle the [Build Your Own Webpage](http://www.codecademy.com/courses/web-beginner-en-LceTK/) project.","entry_html":"\u003Cp\u003EWell done! You now know the basics of creating a web page. If you\u0026#39;re feeling lucky, go ahead and tackle the \u003Ca href=\"http://www.codecademy.com/courses/web-beginner-en-LceTK/\"\u003EBuild Your Own Webpage\u003C/a\u003E project.\u003C/p\u003E\n","external_resources":["https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"],"hint":null,"hint_html":null,"instruction":"Click Save \u0026 Submit Code to complete the course.","instruction_html":"\u003Cp\u003EClick Save \u0026amp; Submit Code to complete the course.\u003C/p\u003E\n","name":"Congratulations!","test_functions":"return true;\n","preview_button":true,"is_current_checkpoint":false}],"description":"Your website is really coming along! Let's add some pictures to liven it up.","name":"Adding images to your site!","checkpoints_count":6,"completed_checkpoints_count":0,"is_current_project":false,"index":2,"completed":false,"author":{"_id":"4ec43e4aa78fe60001000752","handle":"Leng Lee","profile_image_url":"http://s3.amazonaws.com/codecademy-production/profile_thumbnail/53b5ac34548c35dd33003335_212831085.jpg","self_url":"/v1/users/4ec43e4aa78fe60001000752"},"continue_to_course":{"name":"Build Your Own Webpage","url":"http://www.codecademy.com/courses/web-beginner-en-LceTK/?curriculum_id=50579fb998b470000202dc8b"}}],"mode":"web","language":"Web","is_php":null,"return_to":{"name":"HTML \u0026 CSS","url":"http://www.codecademy.com/en/tracks/web"},"project_index":0,"course_progress_percentage":0.14285714285714285,"course_exercises_index":2,"course_exercises_total":14,"continue_to_course":{"name":"Build Your Own Webpage","url":"http://www.codecademy.com/courses/web-beginner-en-LceTK/?curriculum_id=50579fb998b470000202dc8b"},"author":{"_id":"4ec43e4aa78fe60001000752","handle":"Leng Lee","profile_image_url":"http://s3.amazonaws.com/codecademy-production/profile_thumbnail/53b5ac34548c35dd33003335_212831085.jpg","self_url":"/v1/users/4ec43e4aa78fe60001000752"}};
+  CCDATA.composer.current_checkpoint_index = 1;
+  CCDATA.composer.intro = false;
+  CCDATA.composer.lintHintShown = {};
+</script>
+<header class="main">
+    <a href="http://www.codecademy.com/en/tracks/web" class="lesson__back-nav ui-header__link fl">
+  <div class="ui-media lesson__track-wrapper">
+    <div class="ui-media__image">
+      <div class="new-icon new-icon--medium new-icon--back-arrow"></div>
+    </div>
+    <div class="ui-media__main">
+        HTML &amp; CSS
+    </div>
+  </div>
+</a>
+<h1 class="logo">
+  <a href="/" class="ui-header__logo--rebrand">
+    <img alt="Codecademy" src="http://cdn-production.codecademy.com/assets/logo/logo--teal-d10b21a45b84379f184aa74fbd19ab8c.svg" />
+</a></h1>
+
+  <a href="/sign_in" class="sign_in ui-header__link ui-header__link--last fr">Sign in</a>
+  <a href="/register/sign_up" class="sign_up ui-header__link fr">Sign up</a>
+<div id="connection-state">
+  <div class="msg"></div>
+</div>
+<div id="notices"></div>
+</header>
+<div class="ui-overlay ui-overlay--dark ui-overlay--lesson js-lesson-loading-overlay is-shown">
+  <img alt="Ajax-loader-large-white" class="loader" src="http://cdn-production.codecademy.com/assets/ajax-loader-large-white-d4ed9d7ce3211d967fd1285cd84a1734.gif" />
+</div>
+<div class="lesson-left-bar">
+  <div class="js-lesson-left-bar">
+      <div class="lesson-nav ui-dropdown ui-dropdown--light ui-dropdown--checkpoints ui-dropdown--arrow-on-top js-checkpoints">
+  <div class="ui-dropdown__arrow__container">
+    <div class="ui-dropdown__arrow"></div>
+    <div class="ui-dropdown__arrow-border__container">
+      <div class="ui-dropdown__arrow-border"></div>
+    </div>
+  </div>
+
+  <div class="block-list ui-counter ui-counter--bold">
+    <a class="block-list__item ui-media ui-media--reverse lesson-nav__section js-section is-active">
+      <div class="ui-media__image">
+      </div>
+      <div class="ui-media__main">
+        Introduction to HTML
+      </div>
+    </a>
+    <div class="js-section__content" data-index="0">
+      <div class="block-list lesson-nav__exercises">
+        <a class="block-list__item ui-media lesson-nav__exercise js-switch-checkpoint" data-index="0">
+          <div class="ui-media__image new-icon new-icon--small
+          
+             new-icon--checkpoint--completed
+            
+          ">
+          </div>
+          <div class="ui-media__main">
+            <div class="ui-counter__item">
+              Why learn HTML?
+            </div>
+          </div>
+        </a>
+        <a class="block-list__item ui-media lesson-nav__exercise js-switch-checkpoint" data-index="1">
+          <div class="ui-media__image new-icon new-icon--small
+           new-icon--checkpoint--current
+">
+          </div>
+          <div class="ui-media__main">
+            <div class="ui-counter__item">
+              <strong>HTML and CSS</strong>
+            </div>
+          </div>
+        </a>
+        <a class="block-list__item ui-media lesson-nav__exercise js-switch-checkpoint" data-index="2">
+          <div class="ui-media__image new-icon new-icon--small
+          
+            
+             new-icon--checkpoint
+          ">
+          </div>
+          <div class="ui-media__main">
+            <div class="ui-counter__item">
+              Basic terminology
+            </div>
+          </div>
+        </a>
+        <a class="block-list__item ui-media lesson-nav__exercise js-switch-checkpoint" data-index="3">
+          <div class="ui-media__image new-icon new-icon--small
+          
+            
+             new-icon--checkpoint
+          ">
+          </div>
+          <div class="ui-media__main">
+            <div class="ui-counter__item">
+              Make the head
+            </div>
+          </div>
+        </a>
+        <a class="block-list__item ui-media lesson-nav__exercise js-switch-checkpoint" data-index="4">
+          <div class="ui-media__image new-icon new-icon--small
+          
+            
+             new-icon--checkpoint
+          ">
+          </div>
+          <div class="ui-media__main">
+            <div class="ui-counter__item">
+              Paragraphs in the body
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+    <a class="block-list__item ui-media ui-media--reverse lesson-nav__section js-section">
+      <div class="ui-media__image">
+      </div>
+      <div class="ui-media__main">
+        Body elements
+      </div>
+    </a>
+    <div class="js-section__content" data-index="1">
+      <div class="block-list lesson-nav__exercises">
+        <a class="block-list__item ui-media lesson-nav__exercise js-switch-checkpoint" data-index="0">
+          <div class="ui-media__image new-icon new-icon--small
+          
+            
+             new-icon--checkpoint
+          ">
+          </div>
+          <div class="ui-media__main">
+            <div class="ui-counter__item">
+              Paragraphs and headings
+            </div>
+          </div>
+        </a>
+        <a class="block-list__item ui-media lesson-nav__exercise js-switch-checkpoint" data-index="1">
+          <div class="ui-media__image new-icon new-icon--small
+          
+            
+             new-icon--checkpoint
+          ">
+          </div>
+          <div class="ui-media__main">
+            <div class="ui-counter__item">
+              More about headings!
+            </div>
+          </div>
+        </a>
+        <a class="block-list__item ui-media lesson-nav__exercise js-switch-checkpoint" data-index="2">
+          <div class="ui-media__image new-icon new-icon--small
+          
+            
+             new-icon--checkpoint
+          ">
+          </div>
+          <div class="ui-media__main">
+            <div class="ui-counter__item">
+              Using every heading
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+    <a class="block-list__item ui-media ui-media--reverse lesson-nav__section js-section">
+      <div class="ui-media__image">
+      </div>
+      <div class="ui-media__main">
+        Adding images to your site!
+      </div>
+    </a>
+    <div class="js-section__content" data-index="2">
+      <div class="block-list lesson-nav__exercises">
+        <a class="block-list__item ui-media lesson-nav__exercise js-switch-checkpoint" data-index="0">
+          <div class="ui-media__image new-icon new-icon--small
+          
+            
+             new-icon--checkpoint
+          ">
+          </div>
+          <div class="ui-media__main">
+            <div class="ui-counter__item">
+              Mid-lesson breather
+            </div>
+          </div>
+        </a>
+        <a class="block-list__item ui-media lesson-nav__exercise js-switch-checkpoint" data-index="1">
+          <div class="ui-media__image new-icon new-icon--small
+          
+            
+             new-icon--checkpoint
+          ">
+          </div>
+          <div class="ui-media__main">
+            <div class="ui-counter__item">
+               You&#39;re going places!
+            </div>
+          </div>
+        </a>
+        <a class="block-list__item ui-media lesson-nav__exercise js-switch-checkpoint" data-index="2">
+          <div class="ui-media__image new-icon new-icon--small
+          
+            
+             new-icon--checkpoint
+          ">
+          </div>
+          <div class="ui-media__main">
+            <div class="ui-counter__item">
+              Adding images
+            </div>
+          </div>
+        </a>
+        <a class="block-list__item ui-media lesson-nav__exercise js-switch-checkpoint" data-index="3">
+          <div class="ui-media__image new-icon new-icon--small
+          
+            
+             new-icon--checkpoint
+          ">
+          </div>
+          <div class="ui-media__main">
+            <div class="ui-counter__item">
+              Click that image
+            </div>
+          </div>
+        </a>
+        <a class="block-list__item ui-media lesson-nav__exercise js-switch-checkpoint" data-index="4">
+          <div class="ui-media__image new-icon new-icon--small
+          
+            
+             new-icon--checkpoint
+          ">
+          </div>
+          <div class="ui-media__main">
+            <div class="ui-counter__item">
+              Images and links
+            </div>
+          </div>
+        </a>
+        <a class="block-list__item ui-media lesson-nav__exercise js-switch-checkpoint" data-index="5">
+          <div class="ui-media__image new-icon new-icon--small
+          
+            
+             new-icon--checkpoint
+          ">
+          </div>
+          <div class="ui-media__main">
+            <div class="ui-counter__item">
+              Congratulations!
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="block-list__item">
+      <div class="lesson-nav__meta">Course by Leng Lee</div>
+    </div>
+  </div>
+</div><div class="ui-overlay ui-overlay--dark js-checkpoints-overlay"></div>
+<div class="lesson-left-bar__header">
+
+  <div class="article__inner">
+    <a class="ui-button ui-button--small ui-button--round ui-button--transparent lesson__show-checkpoints js-show-checkpoints">
+      2/14
+      <div class="ui-button__dropdown-arrow"></div>
+    </a>
+    <div class="lesson__course-name one-line-text js-course-name">HTML Basics</div>
+    <div class="lesson-left-bar__toggle js-toggle-left-bar">
+      <div class="new-icon--small new-icon--arrow-right"></div>
+    </div>
+  </div>
+</div>
+<div class="lesson-checkpoint__wrapper">
+    <div class="lesson-completed-ribbon" title="You've completed this lesson!"></div>
+  <div class="lesson-checkpoint nano">
+    <div class="nano__content content">
+      <div class="lesson-checkpoint__inner">
+        <div class="article__inner">
+          <div class="article__header">
+            <div class="lesson-checkpoint__name">HTML and CSS</div>
+          </div>
+          <div class="article__content">
+            <p>HTML stands for <strong>HyperText Markup Language</strong>.  <strong>Hypertext</strong> means &quot;text with links in it.&quot; Any time you click on a word that brings you to a new webpage, you&#39;ve clicked on hypertext!</p>
+
+<p>A <strong>markup language</strong> is a programming language used to make text do more than just sit on a page: it can turn text into images, links, tables, lists, and much more. HTML is the markup language we&#39;ll be learning.</p>
+
+<p>What makes webpages pretty? That&#39;s CSS—<strong>Cascading Style Sheets</strong>. Think of it like skin and makeup that covers the bones of HTML. We&#39;ll learn HTML first, then worry about CSS in later courses.</p>
+
+<p>The first thing we should do is set up the skeleton of the page.</p>
+
+<p>a. Always put <code>&lt;!DOCTYPE html&gt;</code> on the first line. This tells the browser what language it&#39;s reading (in this case, HTML).<br>
+b. Always put <code>&lt;html&gt;</code> on the next line. This starts the HTML document.<br>
+c. Always put <code>&lt;/html&gt;</code> on the last line. This ends the HTML document.</p>
+
+          </div>
+        </div>
+        <div class="lesson-checkpoint__instructions">
+          <div class="article__inner lesson-checkpoint__instructions__header">
+            <div class="block-label--light-blue">Instructions</div>
+          </div>
+          <div class="article__inner">
+            <ol>
+<li><p>Go ahead and put the three lines mentioned above into <code>test.html</code>, which is now blank.</p></li>
+<li><p>In between the second and last line (between the <code>&lt;html&gt;</code> and the <code>&lt;/html&gt;</code>), feel free to write whatever message you like.</p></li>
+</ol>
+
+              <div class="ui-accordian ui-accordian--lesson">
+                <div class="ui-accordian__inner">
+                  <a href="#" class="ui-accordian__trigger ui-media">
+                    <div class="ui-media__image new-icon--small new-icon--center new-icon--circle--blue">?</div>
+                    <div class="ui-media__main">
+                      <span class="is-hidden-if-is-expanded"><b>Stuck?</b> Get a hint!</span>
+                      <span class="is-shown-if-is-expanded--inline"><b>Hint</b></span>
+                    </div>
+                  </a>
+                  <div class="ui-accordian__content has-markdown">
+                    <p>In HTML, the order you put things in matters! But formatting (<em>i.e.</em> empty space) doesn&#39;t matter from a technical point of view.</p>
+
+<p>You <em>will</em> notice there&#39;s a pattern in how we indent each line of HTML, though. This is to aid readability and help us catch mistakes. We&#39;ll talk more about indentation later!</p>
+
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  </div>
+    <div class="lesson-links">
+  <a target="_blank" class="lesson-links__link" href="/forums/web-beginner-en-HZA3b/0">Q&A Forum</a>
+  <a target="_blank" class="lesson-links__link" href="/glossary/html">Glossary</a>
+</div>
+</div>
+<div class="lesson-middle js-lesson-editor">
+  <div class="waiting-overlay"></div>
+  <div class="lesson-file-tabs js-lesson-file-tabs">
+  <div class="lesson-middle__container lesson-editor-width">
+    <div class="lesson-file-tabs__wrapper">
+      <div>
+          <div class="lesson-file-tabs__tab js-file-tab tab cf" data-type="test.html">
+            <div class="new-icon--small--center new-icon--lesson-file fl"></div>
+            <div class="fl">test.html</div>
+          </div>      </div>
+      <div id="composer-view-project-button-for-narrow-screen">
+        <div class="actions-list actions-list--composer-tabs codebit-actions-management actions-list--individual-buttons">
+          <div>
+            <div class="js-view-project actions-list__button actions-entity has-hover ui-media">
+              <div class="ui-media__image actions-list__icon cc-icon">project</div>
+              <div class="ui-media__main actions-list__text">View Preview</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="lesson-ace-editor lesson-editor-width js-ace-editor orion-composer"></div>
+<div class="file-container"></div>
+</div>
+<div class="lesson-sidebar lesson-sidebar--composer-responsive js-lesson-sidebar">
+  <div class="lesson-sidebar-container">
+    
+<div class="result-chrome mini-preview">
+  <div class="result-container frame-wrap js-frame-wrap"></div>
+  <div class="js-codebit-actions cf">
+  <div class="editor-actions">
+
+     
+<div class="actions-list actions-list--composer-teal composer-actions-management actions-list--individual-buttons">
+
+
+
+
+    <a href="" class="js-full-screen actions-list__button actions-entity has-hover ui-media">
+      <div class="ui-media__image actions-list__icon cc-icon">expand</div>
+      <div class="ui-media__main actions-list__text">Full Screen</div>
+</a></div>
+
+
+  </div>
+</div>
+
+</div>
+
+  <div class="result-chrome widget-err-console js-err-console is-hidden">
+  <div class="result-container__js-errors-console__msgs js-err-msgs">
+  </div>
+</div>
+
+
+
+
+
+    <div id="js-glossary-flash-card" class="glossary-flash-card glossary-flash-card--hidden"></div>
+    <div id="js-backtest" class="backtest backtest--hidden"></div>
+  </div>
+</div>
+<div class="lesson-action-bar js-lesson-action-bar">
+  <div class="composer-bottom-bar lesson-action-bar__inner">
+  <div class="button-group--horizontal">
+    <a class="ui-button ui-button--medium ui-button--blue--on-dark ui-loading js-submit-code">
+      <div class="ui-loading__other">
+        Save & Submit Code
+      </div>
+      <div class="ui-loading__image new-icon--small new-icon--gear--white loading-spin"></div>
+    </a>
+    <a class="ui-button ui-button--medium ui-button--transparent--on-dark js-reset-code reset">Reset Code</a>
+  </div>
+</div>
+<div class="lesson-action-bar__state lesson-action-bar__inner lesson-action-bar__inner--pass js-state--passed"></div>
+<div class="lesson__state lesson__state--failed js-state--failed"></div>
+<div class="lesson-action-bar__state lesson-action-bar__state--back lesson-action-bar__inner js-state--back">
+  <a class="ui-button ui-button--medium ui-button--gray--on-dark js-back-to-editor back-editor">Back to Editor</a>
+</div>
+</div>
+  <div class="full-preview js-full-preview">
+
+
+  <div class="full-preview__frame js-full-preview__frame">
+    <div class="full-preview__frame__wrap js-full-preview-container">
+    </div>
+  </div>
+
+  <div class="full-preview__footer">
+    <div class='full-preview-bar'>
+
+  <div class="full-preview-bar__cta">
+
+     
+
+            <button class='button js-full-preview__back' id=''>
+      Back to editor
+    </button>
+
+
+    <div class="full-preview-bar__message js-message"></div>
+
+  </div>
+
+</div>
+
+  </div>
+
+</div>
+
+
+
+
+</body>
+<div id='user-registration-modal'>
+<div class="cf module cc-modal" id="user-registration-form">
+
+  <header>
+    <h2 class="sign-up-to">Sign up to Codecademy</h2>
+    <h2 class="sign-up-encourage">
+      You&#x27;re doing great! <span>Sign up to keep track of what you’ve learned!</span>
+</h2>  </header>
+
+
+  <div class="cell social-signin">
+    <h4>Sign up...</h4>
+
+      <a href="/auth/facebook" class="bttn social-signup facebook sign-up"><span class="icon-social-facebook"></span>Sign up Facebook</a>
+      <a href="/auth/google_oauth2" class="bttn social-signup google sign-up"><span class="icon-social-google"></span>Sign up Google</a>
+
+  </div>
+
+  <div class="cell email-signin">
+    <h4>Sign up with email</h4>
+    <span class="or module">or</span>
+    <script>
+  // True when registration modal is loaded
+  var registration_partial = true;
+</script>
+<form accept-charset="UTF-8" action="/register" class="new_user" id="new-user" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="qz2Vqz+bDP49yewXMBJx/RLa954mbonjvM3x8i8MvaQ=" /></div>
+  
+  <input id="user_email" name="user[email]" placeholder="Email" size="30" tabindex="1" type="email" />
+  <input autocapitalize="off" autocorrect="off" id="user_username" name="user[username]" placeholder="Username" size="30" tabindex="2" type="text" />
+  <input id="user_password" name="user[password]" placeholder="Password" size="30" tabindex="3" type="password" />
+    <input id="user_password_confirmation" name="user[password_confirmation]" placeholder="Confirm password" size="30" tabindex="4" type="password" />
+    <input type="hidden" id="user_redirect" name="user[redirect]" value="http://www.codecademy.com/courses/web-beginner-en-HZA3b/0/2?curriculum_id=50579fb998b470000202dc8b" />
+
+  <input name="user[remember_me]" type="hidden" value="0" /><input checked="checked" class="hidden" id="user_remember_me" name="user[remember_me]" type="checkbox" value="1" />
+
+  <p class="note">By signing up, you agree to our <a href="/terms">Terms of Service</a></p>
+
+  <input class="bttn blue" name="commit" type="submit" value="Get started!" />
+</form>
+  </div>
+</div>
+
+<script type="text/x-underscore-template" id="tmpl-twitter-email-modal">
+  <form name="twitter-email" class="form-horizontal" id="twitter-email"
+   action="/auth/twitter" >
+    <h3>You&#x27;re almost done!</h3>
+    <p>We need your email to finish creating your account.</p>
+    <table class="control-group" id="email-group">
+      <tr>
+        <td class="controls">
+          <input type="text" id="twitter-email-field" name="email" placeholder="Enter your email address"/>
+          <span class="help-inline">Please enter a valid email address</span>
+        </td>
+      </tr>
+    </table>
+    <div class="actions">
+      <button type="submit" class="bttn green" id="submit-twitter" disabled="disabled">
+        Continue
+      </button>
+    </div>
+  </form>
+</script>
+
+</div>
+<div id='user-session-modal'>
+<div class="cf cc-modal module" id="user-session-form">
+  <header>
+    <h2>Sign in</h2>
+  </header>
+
+  <div class="cell social-signin">
+    <h4>Sign in with...</h4>
+
+      <a href="/auth/facebook" class="bttn social-signup facebook sign-up"><span class="icon-social-facebook"></span>Sign in with Facebook</a>
+      <a href="/auth/google_oauth2" class="bttn social-signup google sign-up"><span class="icon-social-google"></span>Sign in with Google</a>
+      <a href="/auth/twitter" class="bttn social-signup twitter sign-up"><span class="icon-social-twitter"></span>Sign in with Twitter</a>
+
+  </div>
+
+  <div class="cell neutral email-signin">
+    <h4>Sign in with email</h4>
+    <span class="or module">or</span>
+    <form accept-charset="UTF-8" action="/sign_in" class="new_user" id="new-session" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="qz2Vqz+bDP49yewXMBJx/RLa954mbonjvM3x8i8MvaQ=" /></div>
+
+
+  <input autocapitalize="off" autocorrect="off" id="user_login" name="user[login]" placeholder="Email or username" size="30" tabindex="1" type="text" />
+  <input id="user_password" name="user[password]" placeholder="Password" size="30" tabindex="2" type="password" />
+    <div class="remember-me">
+      <input name="user[remember_me]" type="hidden" value="0" /><input checked="checked" id="user_remember_me" name="user[remember_me]" type="checkbox" value="1" />
+      <label for="user_remember_me">Remember me</label>
+
+      <a href="/secret/new" class="secondary">Forgot your password?</a>
+    </div>
+
+  <div>
+  <input class="sign-in-button bttn blue" name="commit" type="submit" value="Login" />
+  <a href="/register/sign_up" class="create-account secondary">Sign up</a>
+  </div>
+</form>
+
+  </div>
+</div>
+
+</div>
+<script src="http://cdn-production.codecademy.com/assets/templates/common-en-e9e653be7215c84704beb770449e942f.js" type="text/javascript"></script>
+
+  <script src="http://cdn-production.codecademy.com/assets/dist/common-febfb0b58d2694b7ecf90fed19b5b747.js" type="text/javascript"></script>
+  <script src="http://cdn-production.codecademy.com/assets/dist/controllers/composer_controller-df6e7968e926cfebde1f0cc473d394d6.js" type="text/javascript"></script>
+    <script src="http://cdn-production.codecademy.com/assets/dist/controllers/registrations_controller-b11f907dd50218e3893643c69ad41ce3.js" type="text/javascript"></script>
+
+  <!-- Qualaroo -->
+  <script type="text/javascript">
+    var _kiq = _kiq || [];
+  </script>
+
+  <!-- Chartbeat -->
+  <script>
+    var _sf_async_config={uid:27714,domain:"codecademy.com"};
+    (function(){
+      function loadChartbeat() {
+        window._sf_endpt=(new Date()).getTime();
+        var e = document.createElement('script');
+        e.setAttribute('language', 'javascript');
+        e.setAttribute('type', 'text/javascript');
+        e.setAttribute('src',
+        (("https:" == document.location.protocol) ? "https://a248.e.akamai.net/chartbeat.download.akamai.com/102508/" : "http://static.chartbeat.com/") +
+        "js/chartbeat.js");
+        document.body.appendChild(e);
+      }
+      var oldonload = window.onload;
+      window.onload = (typeof window.onload != 'function') ?
+      loadChartbeat : function() { oldonload(); loadChartbeat(); };
+    })();
+  </script>
+
+
+<!-- Load relevant javascript controller -->
+<script type="text/javascript">
+  require(['common', 'controllers/composer_controller'], function (common, controller) {
+    if (common) common.init();
+    if (controller) controller['init']();
+    
+  });
+  var registration_partial = registration_partial || false;
+  if (registration_partial) {
+    require(["controllers/registrations_controller"], function (controller) {
+      controller.init();
+    });
+  }
+  CCDATA.authenticity_token = 'qz2Vqz+bDP49yewXMBJx/RLa954mbonjvM3x8i8MvaQ=';
+</script>
+
+<!-- Facebook -->
+<div id="fb-root"></div>
+<script>
+  var FB_APP_ID = '212500508799908';
+  window.fbAsyncInit = function() {
+    var FB = (window.FB || undefined);
+    if (FB) {
+      FB.init({
+        appId      : FB_APP_ID
+      , channelUrl : window.root_url+'/channel.html'
+      , status     : true
+      , cookie     : true
+      , xfbml      : true
+      });
+    }
+  };
+
+  (function(d){
+    var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+    if (d.getElementById(id)) {return;}
+    js = d.createElement('script'); js.id = id; js.async = true;
+    js.src = "//connect.facebook.net/en_US/all.js";
+    ref.parentNode.insertBefore(js, ref);
+  }(document));
+</script>
+
+<!-- Overlay laoder. Deprecated by rebrand? -->
+<script>
+  var overlay = document.getElementById('overlay');
+  if (overlay && overlay.children.length > 0) {
+    overlay.style.cssText = "display: block;";
+  }
+</script>
+</html>

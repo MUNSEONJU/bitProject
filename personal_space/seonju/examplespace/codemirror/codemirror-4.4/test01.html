@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+<head>
+  <title>CodeMirror Example : Autocomplete and Code folding</title>
+  <meta charset="utf-8"/>
+  <link rel="stylesheet" href="lib/codemirror.css">
+  <link rel="stylesheet" href="addon/hint/show-hint.css">
+  <link rel="stylesheet" href="addon/fold/foldgutter.css" />
+  <script src="lib/codemirror.js"></script>
+  <script src="addon/hint/show-hint.js"></script>
+  <script src="addon/hint/javascript-hint.js"></script>
+  <script src="mode/htmlmixed/htmlmixed.js"></script>
+  <script src="mode/css/css.js"></script>
+  <script src="mode/javascript/javascript.js"></script>
+  <script src="addon/fold/foldcode.js"></script>
+  <script src="addon/fold/foldgutter.js"></script>
+  <script src="addon/fold/brace-fold.js"></script>
+  <script src="addon/fold/xml-fold.js"></script>
+  <script src="addon/fold/comment-fold.js"></script>
+  <script src="mode/xml/xml.js"></script>
+</head>
+<body>
+
+  <form style="width:500px; border:3px dashed #666 ">
+    <!-- Some random JS code placed in the textarea for demo purposes -->
+    <textarea id="code" name="code">
+        var sunju = "ssss";
+        console.log("oooo");
+        function getCompletions(token, context) {
+          var found = [], start = token.string;
+        }
+    </textarea>
+
+  </form>
+
+  <script>
+    window.onload = function() {
+                // CodeMirror.commands.autocomplete = function(cm) {
+                //     CodeMirror.showHint(cm, CodeMirror.hint.javascript);
+                // };
+                window.editor = CodeMirror.fromTextArea(code, {
+                  mode: "htmlmixed",
+                  lineNumbers: true,
+                  // lineWrapping -> 요소 하나씩 span으로 묶는거 (false : 1라인 1span) 
+                  lineWrapping: true,
+                  extraKeys: {"Ctrl-Space": "autocomplete"},
+                  foldGutter: {
+                    rangeFinder: new CodeMirror.fold.combine(CodeMirror.fold.brace, CodeMirror.fold.comment)
+                  },
+                  gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"]
+                });
+              };
+  </script>
+
+</body>
+</html>
