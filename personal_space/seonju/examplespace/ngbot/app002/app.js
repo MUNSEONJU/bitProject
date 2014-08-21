@@ -8,7 +8,7 @@ angular.module('ngbotApp', ['ngRoute'])
 		$routeProvider
 			.when('/home', {templateUrl: 'template/homeExam.html'})
 			.when('/guide', {templateUrl: 'template/guideExam.html'})
-			.when('/project', {templateUrl: 'template/projectExam.html'})
+			.when('/project', {templateUrl: 'template/projects.html'})
 			.when('/contact', {templateUrl: 'template/contactExam.html'})
 			.when('/community', {templateUrl: 'template/communityExam.html'})
 			.otherwise({redirectTo: '/guide'})
