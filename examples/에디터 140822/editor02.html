@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html  ng-app="ap">
+  <head>
+    <meta charset="UTF-8">
+    <title>Editor</title>
+    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="http://code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/ace/1.1.3/ace.js"></script>
+    
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.22/angular.min.js"></script>
+    <script src="editor02.js"></script>
+
+    <script>
+			$(function() {
+				$("#tabs").tabs();
+			});
+    </script>
+    
+    <style>
+      
+      html, body {
+        background-color: #333333;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      
+      #tabs {
+        position: absolute;
+        z-index: 200;
+        padding: 0;
+        margin: 0;
+        width: 50%;
+        height: 96%;
+        background-color: #AAA;
+        left: 19%;
+      }
+      
+      #tabs_title {
+        padding-left: 5px;
+        
+      }
+      
+      
+      #tabs-1, #tabs-2, #tabs-3 {
+        padding: 0;
+        margin: 0;
+        height: 90%;
+      }
+      #editor1, #editor2, #editor3 {
+        width: 100%;
+        height: 95%;
+      }
+      
+      .result_div {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        width: 30%;
+        height: 40%;
+        z-index: 300;
+        text-align: right;
+      }
+      
+      #result {
+        background-color: white;
+        width: 100%;
+        height: 450px;
+        border: 1px solid #333333;
+      }
+      
+      #result:hover {
+        border: 3px solid #333333;
+      }
+ 
+      .full {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 400;
+        width: 100%;
+        height: 100%;
+        background-color: #AA0000;
+        padding: 0;
+        margin: 0;
+        display: none;
+      }
+      
+      .full_menubar {
+        position: absolute;
+        z-index: 400;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 10%;
+        padding: 0;
+        background-color: #666666;
+      }
+      
+      #result_full {
+        background-color: white;
+      }
+      
+      #bottombar {
+        position: absolute;
+        bottom: 0;
+        z-index: 999;
+        width: 100%;
+        height: 7%;
+        padding-top: 10px;        
+        padding-left: 70%;
+        
+        background: rgb(76,76,76);
+        background: -moz-linear-gradient(top, rgba(76,76,76,1) 0%, rgba(89,89,89,1) 12%, rgba(102,102,102,1) 25%, rgba(71,71,71,1) 39%, rgba(44,44,44,1) 50%, rgba(0,0,0,1) 51%, rgba(17,17,17,1) 60%, rgba(43,43,43,1) 76%, rgba(28,28,28,1) 91%, rgba(19,19,19,1) 100%);
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(76,76,76,1)), color-stop(12%,rgba(89,89,89,1)), color-stop(25%,rgba(102,102,102,1)), color-stop(39%,rgba(71,71,71,1)), color-stop(50%,rgba(44,44,44,1)), color-stop(51%,rgba(0,0,0,1)), color-stop(60%,rgba(17,17,17,1)), color-stop(76%,rgba(43,43,43,1)), color-stop(91%,rgba(28,28,28,1)), color-stop(100%,rgba(19,19,19,1)));
+        background: -webkit-linear-gradient(top, rgba(76,76,76,1) 0%,rgba(89,89,89,1) 12%,rgba(102,102,102,1) 25%,rgba(71,71,71,1) 39%,rgba(44,44,44,1) 50%,rgba(0,0,0,1) 51%,rgba(17,17,17,1) 60%,rgba(43,43,43,1) 76%,rgba(28,28,28,1) 91%,rgba(19,19,19,1) 100%);
+        background: -o-linear-gradient(top, rgba(76,76,76,1) 0%,rgba(89,89,89,1) 12%,rgba(102,102,102,1) 25%,rgba(71,71,71,1) 39%,rgba(44,44,44,1) 50%,rgba(0,0,0,1) 51%,rgba(17,17,17,1) 60%,rgba(43,43,43,1) 76%,rgba(28,28,28,1) 91%,rgba(19,19,19,1) 100%);
+        background: -ms-linear-gradient(top, rgba(76,76,76,1) 0%,rgba(89,89,89,1) 12%,rgba(102,102,102,1) 25%,rgba(71,71,71,1) 39%,rgba(44,44,44,1) 50%,rgba(0,0,0,1) 51%,rgba(17,17,17,1) 60%,rgba(43,43,43,1) 76%,rgba(28,28,28,1) 91%,rgba(19,19,19,1) 100%);
+        background: linear-gradient(to bottom, rgba(76,76,76,1) 0%,rgba(89,89,89,1) 12%,rgba(102,102,102,1) 25%,rgba(71,71,71,1) 39%,rgba(44,44,44,1) 50%,rgba(0,0,0,1) 51%,rgba(17,17,17,1) 60%,rgba(43,43,43,1) 76%,rgba(28,28,28,1) 91%,rgba(19,19,19,1) 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4c4c4c', endColorstr='#131313',GradientType=0 );
+        
+      }
+      
+      #sidebar{
+        position: absolute;
+        left: 0;
+        width: 19%;
+        height: 100%;        
+        background-color: #432511;
+      }
+      
+    </style>
+  </head>
+  <body  ng-controller="ctrl">
+    
+    <div id="sidebar">
+      
+    </div>
+    
+    <div id="tabs">
+ 
+      <div id="tabs_title">
+        <label>Color theme : </label> 
+        <select class="selectbar" ng-model="editor_theme" ng-change="change_theme();">
+          <option value="ace/theme/ambiance">ambiance</option>
+          <option value="ace/theme/chaos">chaos</option>
+          <option value="ace/theme/chrome">chrome</option>
+          <option value="ace/theme/clouds">clouds</option>
+          <option value="ace/theme/clouds_midnight">clouds_midnight</option>
+          <option value="ace/theme/cobalt">cobalt</option>
+          <option value="ace/theme/crimson_editor">crimson_editor</option>
+          <option value="ace/theme/dawn">dawn</option>
+          <option value="ace/theme/dreamweaver">dreamweaver</option>
+          <option value="ace/theme/eclipse">eclipse</option>
+          <option value="ace/theme/github">github</option>
+          <option value="ace/theme/idle_fingers">idle_fingers</option>
+          <option value="ace/theme/katzenmilch">katzenmilch</option>
+          <option value="ace/theme/kr_theme">kr_theme</option>
+          <option value="ace/theme/kuroir">kuroir</option>
+          <option value="ace/theme/merbivore">merbivore</option>
+          <option value="ace/theme/merbivore_soft">merbivore_soft</option>
+          <option value="ace/theme/mono_industrial">mono_industrial</option>
+          <option value="ace/theme/monokai" ng-selected="true">monokai</option>
+          <option value="ace/theme/pastel_on_dark">pastel_on_dark</option>
+          <option value="ace/theme/solarized_dark">solarized_dark</option>
+          <option value="ace/theme/solarized_light">solarized_light</option>
+          <option value="ace/theme/terminal">terminal</option>
+          <option value="ace/theme/textmate">textmate</option>
+          <option value="ace/theme/tomorrow">tomorrow</option>
+          <option value="ace/theme/tomorrow_night">tomorrow_night</option>
+          <option value="ace/theme/tomorrow_night_blue">tomorrow_night_blue</option>
+          <option value="ace/theme/tomorrow_night_bright">tomorrow_night_bright</option>
+          <option value="ace/theme/tomorrow_night_eighties">tomorrow_night_eighties</option>
+          <option value="ace/theme/twilight">twilight</option>
+          <option value="ace/theme/vibrant_ink">vibrant_ink</option>
+          <option value="ace/theme/xcode">xcode</option>
+        </select>
+      </div>
+      
+      <ul>
+        <li>
+          <a href="#tabs-1">HTML</a>
+        </li>
+        <li>
+          <a href="#tabs-2">JS</a>
+        </li>
+        <li>
+          <a href="#tabs-3">CSS</a>
+        </li>
+      </ul>
+      <div id="tabs-1">
+        <pre id="editor1"></pre>
+      </div>
+      <div id="tabs-2">
+        <pre id="editor2"></pre>
+      </div>
+      <div id="tabs-3">
+        <pre id="editor3"></pre>
+      </div>
+    </div>
+    
+    <!-- 미니 결과 -->
+    <div class="result_div">
+      <iframe id="result" src="about:blank" frameborder=0 ></iframe>
+      <button ng-click="full();" class="btn btn-default">Full Screen</button>
+      <button ng-click="reset1();" class="btn btn-warning">Reset</button>
+    </div>
+    
+    
+    <div id="full" class="full">
+      <iframe id="result_full" src="about:blank" width=100% height=90% frameborder=0></iframe>
+      <div class="full_menubar">
+        <button ng-click="back();">Back to Editor</button>
+        <button ng-click="reset2();">Refresh</button>
+      </div>
+    </div>
+    
+    
+    <div id="bottombar">
+      <button class="btn btn-default" ng-click="wideEditor();">Full Editor</button>
+      <button class="btn btn-default" ng-click="defaultEditor();">Default Editor</button>
+    </div>
+    
+    
+  </body>
+  
+</html>
