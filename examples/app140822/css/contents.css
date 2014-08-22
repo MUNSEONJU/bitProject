@@ -1,0 +1,59 @@
+*{
+	margin:0;
+	padding:0;
+}
+
+/* 너비 1024 ~  */
+@media(min-width : 1024px){
+	#contents_wrapper{
+		margin:0 auto;
+		width:1000px;
+	}
+  .projects_wrapper{
+    padding-top:50px;
+  }
+}
+/* 너비 768 ~ 1023 */
+@media(min-width : 768px) and (max-width: 1023px){
+	#contents_wrapper{
+		margin:0 70px;
+		width:auto;
+	}
+	.projects_wrapper{
+    padding-top:50px;
+  }
+}
+/* 너비 ? ~ 767*/
+@media (max-width:767px){
+  #contents_wrapper{
+    margin:0;
+    padding:0 20px;
+    width:auto;
+  }
+}
+
+	#contents_wrapper .projects{
+		padding:50px 0;
+		background:#f2f2f2; 
+		text-align: center;
+	}
+	#contents_wrapper a.project_container{
+		color:black;
+		text-decoration: none;
+		display:inline-block;
+		height:400px;
+		width:300px;
+		padding:49px 19px;
+		border:1px solid #444444;
+	}
+	#contents_wrapper .project_logo{
+		margin-bottom:50px;
+		display:inline-block;
+		width:150px;
+		height:150px;
+		background-image:url(../img/angularjs_150x150.png);
+	}
+	.projects_wrapper h1{
+	  margin:0;
+	  padding-top:20px;
+	}
