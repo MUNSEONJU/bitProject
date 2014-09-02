@@ -4,6 +4,16 @@ body
   margin: 0;
   padding: 0;
 }
+
+#top-content, #sidebar, #topnav, #box, #modal {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
 .panel-group
 {
   margin: 0 !important;
@@ -11,7 +21,6 @@ body
 #topnav
 {
   background-color: #333333;
-  background-color: #555;
   display: block;
   height: 35px;
   left: 0;
@@ -27,7 +36,7 @@ body
 }
 .settings-content-div
 {
-  padding: 20px;
+  padding: 10px 10px 10px 10px;
   width: 100%;
 }
 #sidebar
@@ -142,12 +151,12 @@ body
   top: 39px;
   z-index: 110;
 }
-#full_btn, #close_btn, #refresh_btn
+#full_btn, #close_btn, #refresh_btn, #run_btn
 {
   box-shadow: 4px 4px 14px #000;
   opacity: 0.3;
 }
-#full_btn:hover, #refresh_btn:hover, #close_btn:hover
+#full_btn:hover, #refresh_btn:hover, #close_btn:hover, #run_btn:hover
 {
   opacity: 1;
 }
@@ -181,9 +190,8 @@ body
   border-top: 1px solid white;
 }
 
-#error-div {
+#error-div, #success-div{
   position: absolute;
-  display: none;
   padding: 10px;
   top: calc(45px + 56%);
   right: 10px;
@@ -191,11 +199,26 @@ body
   height: auto;
   border-radius: 4px;
   background-color: #000;
-  opacity: 0.6;  
-  color: red;
+}
+#error-msg, #success-msg {
+  margin: 0;
+  font-family: "Consolas";
+  vertical-align: middle;
+  word-wrap: break-word;
 }
 #error-msg {
-  font-family: "Arial Black";
-  word-wrap: break-word;
+  color: red;
+}
+#success-msg {
+  color: #00FF00;
+}
+
+.setting-title {
+  margin: 0; 
+  margin-bottom: 5px;
+  padding-bottom: 3px;
+  font-family: 'arial black';
+  border-bottom : 1px dashed;
+  text-align: left;
 }
 

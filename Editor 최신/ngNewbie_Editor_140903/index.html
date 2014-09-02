@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="ngNewbieEditor">
+<html ng-app="ngEditor">
 
   <head>
     <meta charset="utf-8">
@@ -27,7 +27,12 @@
   </head>
 
   <body ng-controller="MainCtrl">
-    
+    <!-- left Slide Modal -->
+    <div id="box" ng-click="goBack()"></div>
+    <div id="modal" >
+      <settings></settings>
+    </div>
+  
     <div id="topnav">
       <div class="topnav-btn-div">
         <button class="btn btn-primary btn-sm" ng-click="goRight()">
@@ -39,12 +44,7 @@
       </div>
     </div>
     
-    <!-- modal background -->
-    <div id="box" ng-click="goBack()"></div>
     
-    <div id="modal">
-      <settings></settings>
-    </div>
   
     <div id="sidebar">
       <!--My Accordion -->
@@ -54,7 +54,9 @@
     
     <div id="result_btn_div" ng-init="show = true;">
       <button id="refresh_btn"
-      ng-click="update();" class="btn btn-warning btn-xs"><i class="glyphicon glyphicon-refresh"></i></button>
+      ng-click="update();" class="btn btn-warning btn-xs" ng-show="dynamicResult"><i class="glyphicon glyphicon-refresh"></i></button>
+      <button id="run_btn"
+      ng-click="run();" class="btn btn-success btn-xs" ng-hide="dynamicResult"><i class="glyphicon glyphicon-play"></i></button>
       <button id="full_btn" 
       ng-click="full();" class="btn btn-info btn-xs" ng-show="show" ><i class="glyphicon glyphicon-fullscreen"></i></button>
       <button id="close_btn" 
@@ -78,10 +80,17 @@
         <div id="result-div">
           <iframe id="result" frameborder=0></iframe>
         </div>
-
+        
         <div id="error-div">
-          <p id="error-msg"></p>
+          <p id="error-msg"><i class="glyphicon glyphicon-remove-sign"></i>&nbsp;<span id="error-text"></span></p>
         </div>
+        <div id="success-div">
+          <p id="success-msg"><i class="glyphicon glyphicon-ok-sign"></i>&nbsp;Correct code</p>
+        </div>
+        <script>
+          $('#success-div').hide();
+          $('#error-div').hide();
+        </script>
         
       </div>
         
@@ -101,11 +110,15 @@
         resizer-height="20" 
         resizer-left="#sidebar" 
         resizer-right="#content"
-        resizer-max="350">
-        
+        resizer-max="200">
     </div>
+    
+  </div>  
+    
+    
     <script src="js/app.js"></script>
     <script src="js/resizer.js"></script>
+    <script src="js/controllers.js"></script>
   </body>
 
 </html>

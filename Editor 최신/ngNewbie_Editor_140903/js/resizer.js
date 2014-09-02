@@ -1,4 +1,4 @@
-angular.module('resizer', [])
+angular.module('ngEditor.Resizer', [])
 .directive('resizer', function($document) {
 
     return function($scope, $element, $attrs) {
@@ -7,6 +7,32 @@ angular.module('resizer', [])
             event.preventDefault();
             $document.on('mousemove', mousemove);
             $document.on('mouseup', mouseup);
+        });
+        $element.on('dblclick', function(event) {
+            event.preventDefault();
+            
+            
+            if($($attrs.resizerLeft).width() > 100) {
+            	$($element).css({
+	              left: 0
+	            });
+	            $($attrs.resizerLeft).css({
+	              width: 0
+	            });
+	            $($attrs.resizerRight).css({
+	              left: 6
+	            });
+            } else {
+        			$($element).css({
+              	left: 200
+	            });
+          	 	$($attrs.resizerLeft).css({
+	              width: 200
+	            });
+	            $($attrs.resizerRight).css({
+	              left: 206
+	            });
+            }
         });
 
         function mousemove(event) {
@@ -51,3 +77,7 @@ angular.module('resizer', [])
         }
     };
 });
+
+
+
+
