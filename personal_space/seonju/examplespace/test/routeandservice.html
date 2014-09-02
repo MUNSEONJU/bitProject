@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	 <script type="text/javascript" src="http://code.angularjs.org/1.2.9/angular.min.js"></script>
+   <script type="text/javascript" src="http://code.angularjs.org/1.2.9/angular-route.js"></script>
+   <script>
+   	/**
+   	*  Module
+   	*
+   	* Description
+   	*/
+   	var app = angular.module('myapp', ['ngRoute']);
+   	app.factory('hello', [function(){
+   		return { helloTo : function(aa){
+   					console.log(aa);
+   			}}
+   		}
+   	])
+
+   	var inj = angular.injector(['ng','myapp']);
+   	console.log( inj.has('hello') );
+   	console.log( inj.has('$route') );
+   	var injr = angular.injector(['ng','ngRoute']);
+   	console.log( injr.has('$route') );
+   </script>
+   <style>
+   	a{
+   		font-size:1.5em;
+   		padding:10px 30px;
+   	}
+   </style>
+</head>
+<body ng-app="myapp">
+<div style="text-align:center;height:50px;border-bottom:1px solid black;">
+	<a href="#">가</a>	
+	<a href="#">나</a>	
+	<a href="#">다</a>	
+	<a href="#">라</a>	
+</div>
+<div id="d1" style="width:100px; height:100px; background:red;"></div>
+</body>
+</html>
