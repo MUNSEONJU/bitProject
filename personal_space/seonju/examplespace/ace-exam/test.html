@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title></title>
+	<script src="http://ajaxorg.github.io/ace-builds/src-min-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+	<!-- // <script src="src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script> -->
+	
+	<style type="text/css" media="screen">
+    body {
+        overflow: hidden;
+    }
+    
+    #editor { 
+        margin: 0;
+        width:500px;
+        height:500px;
+    }
+  </style>
+</head>
+<body>
+	<pre id="editor">asdf </pre>
+	<script>
+    var editor = ace.edit("editor");
+    editor.setTheme("ace/theme/twilight");
+    editor.getSession().setMode("ace/mode/html");
+    editor.getSession().setTabSize(30);
+	</script>
+</body>
+</html>

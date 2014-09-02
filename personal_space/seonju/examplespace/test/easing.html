@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script type="text/javascript" src=" http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+	<script>
+	function click(){
+		$(".dd").animate({left:'+=300px'}, 700, "easeInExpo")
+	}
+	</script>
+</head>
+<body>
+<div class="dd" style="position:absolute; background:gray; width:100px; height:100px; top:50px; left:50px;"></div>
+<button onclick="click()">aa</button>
+</body>
+</html>

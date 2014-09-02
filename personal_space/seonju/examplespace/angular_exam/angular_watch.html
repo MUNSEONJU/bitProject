@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.min.js"></script>
+	<script>
+
+	/**
+	* myapp Module
+	*
+	* Description
+	*/
+	angular.module('myapp', [])
+		.controller('myctrl',function($scope){
+			$scope.value='';
+			$scope.$watch('value',function(){
+				console.log("i watch");
+			})
+		})
+
+	</script>
+
+</head>
+<body ng-app="myapp">
+
+<div ng-controller = "myctrl">
+	<input ng-model="value">
+</div>
+</body>
+</html>

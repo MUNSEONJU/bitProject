@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript" src="http://code.angularjs.org/1.2.9/angular.min.js"></script>
+	<style>
+		.div1{
+			background:gray;
+			width:150px;
+			height:auto;
+		}
+		.p1{
+			word-wrap:break-word;
+		}
+	</style>
+	<script>
+		
+	  var m = '';
+		angular.module('myapp', [])
+		.controller('ctrl', ['$scope',function($scope,$window){
+			$scope.window = $window;
+			$scope.window.$on("onerror",function(msg, url, line){
+				return msg;
+			})
+		}])
+
+         function ThrowError () {
+            window.NotExistingFunction ();
+        }
+	</script>
+</head>
+<body ng-app="myapp">
+<div ng-controller="ctrl">
+	<div class="div1">
+		<p class="p1">error: {{text}}</p>
+		<button onclick="ThrowError()"</button>
+	</div>
+<div>
+</body>
+</html>

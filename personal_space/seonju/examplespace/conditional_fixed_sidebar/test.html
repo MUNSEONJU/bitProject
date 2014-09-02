@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+	<script>
+$(document).ready(function () {
+	var length = $('#left').height() - $('#sidebar').height() + $('#left').offset().top;
+    
+    $(window).scroll(function () {
+        
+
+        var scroll = $(this).scrollTop();
+        var height = $('#sidebar').height() + 'px';
+        if (scroll < $('#left').offset().top) {
+            $('#sidebar').css({
+                'position': 'absolute',
+                'top': '0'
+            });
+        } else if (scroll > length) {
+            $('#sidebar').css({
+                'position': 'absolute',
+                'bottom': '0',
+                'top': 'auto'
+            });
+        } else {
+            $('#sidebar').css({
+                'position': 'fixed',
+                'top': '0',
+                'height': height
+            });
+        };
+    });
+});
+	</script>
+	<style>
+	#header {
+    background: #c2c2c2;
+    height: 50px;
+}
+#wrapper {
+    position: relative;
+    min-height: 500px; /* Just as an example */
+    width: 500px;
+}
+#left {
+    position: absolute;
+    background: #d7d7d7;
+    width: 150px;
+    height: 100%;
+}
+#right {
+    position: relative;
+    width: 350px;
+    float: right;
+}
+#sidebar {
+    background: #0096d7;
+    width: 150px;
+    color: #fff;
+}
+.clear {
+    clear: both;
+}
+#footer {
+    background: #c2c2c2;
+    height: 500px; /* Just as an example */
+}
+	</style>
+</head>
+<body>
+<div id="header">Header</div>
+<div id="contents"> 
+<div id="contents_wrapper">
+  <div class="guide_wrapper row">
+    <div id="left" class="col-md-3">
+        <div id="sidebar">
+            <ul>
+              <li><a href="#guide_first">Guide1</a></li>
+              <li><a href="#guide_second">Guide2</a></li>
+              <li><a href="#guide_third">Guide3</a></li>
+              <li><a href="#guide_fourth">Guide4</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="right col-md-9">
+      <div class="article" style="color:white;background:black;">
+      
+      <p id="guide_first">
+      <h1>First</h1>
+      Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+      </p>
+      <p id="guide_second">
+      <h1>Second</h1>
+      Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+      </p>
+      <p id="guide_third">
+      <h1>Third</h1>
+      Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+      </p>
+      <p id="guide_fourth">
+      <h1>Fourth</h1>
+      Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+      </p>
+      
+      
+      </div>
+    </div> <!--  right  -->
+    <div class="clear"></div>
+</div><!--contents wrapper-->
+</div> <!--contents-->
+
+</div>
+</body>
+</html>

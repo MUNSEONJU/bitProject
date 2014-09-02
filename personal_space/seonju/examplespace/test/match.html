@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script>
+		var src = "azcafAJAC";
+
+		//a~c 사이의 문자를 찾아라
+		var re = /[a-c]/;
+
+		var result = src.match(re);
+
+		// The entire match is in array element 0.
+		document.write(result[0] + "<br/>");
+
+		// Now try the same match with the global flag.
+		var reg = /[a-c]/g;
+		result = src.match(reg);
+
+
+		// The matches are in elements 0 through n.
+		for (var index = 0; index < result.length; index++)
+		{
+		    document.write ("submatch " + index + ": " +  result[index]);
+		    document.write("<br />");
+		}
+	</script>
+</head>
+<body>
+
+</body>
+</html>
