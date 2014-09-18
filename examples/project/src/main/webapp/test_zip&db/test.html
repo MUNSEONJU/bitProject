@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html ng-app="sampleApp">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/ace/1.1.3/ace.js"></script>
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="jszip.js"></script>
+<script src="FileSaver.js"></script>
+<script src="test.js"></script>
+
+</head>
+<style>
+  #edit {
+    width : 300px;
+    height: 300px;
+  }
+  
+  #edit1 {
+    width : 300px;
+    height: 300px;
+  }
+  
+</style>
+<body>
+<div class="user" ng-controller="Ctrl">
+ <pre id="edit"></pre>
+ <pre id="edit1"></pre>
+ <button ng-click="add()">add</button>
+ <button onclick="download()">click to download</button>
+</div>
+  <script>
+    var edit = ace.edit('edit');
+    var edit1 = ace.edit('edit1');
+    
+    var download = function(){
+    
+    var zip = new JSZip();
+    zip.file("example.html", edit.getValue());
+    zip.file("example.js", edit1.getValue());
+    
+    var blob = zip.generate({type:"blob"});
+    saveAs(blob, "example.zip");
+
+  }
+
+</script>
+</body>
+
+</html>

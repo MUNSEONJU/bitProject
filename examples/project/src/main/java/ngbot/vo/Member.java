@@ -1,9 +1,15 @@
 package ngbot.vo;
 
-public class Member {
-  protected int     no;
-  protected String  email;
-  protected String  password;
+import java.io.Serializable;
+
+
+public class Member implements Serializable{
+  private static final long serialVersionUID = 1L;
+  private int     no;
+  private String  email;
+  private String  password;
+  
+  public Member() {}
   
   @Override
   public String toString() {

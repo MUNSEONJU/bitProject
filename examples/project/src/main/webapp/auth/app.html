@@ -1,0 +1,17 @@
+<html ng-app="sampleApp">
+<head>
+<title>AJAX 가입</title>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="test.js"></script>
+</head>
+
+<body ng-controller="Ctrl">
+email : <input type="text" ng-model="email" id="email" maxlength="16"  ng-change="up()"/>
+<span id="loadtext" style="color: BLUE;"></span> <br>
+pw: <input type="password" id="pwd1"><br>
+확인란:<input type="password" id="pwd2"> 
+<span id="pwtext" style="color: green;"></span><br>
+<button id="add">가입</button>
+</body>
+</html>

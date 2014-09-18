@@ -1,0 +1,14 @@
+<html ng-app="sampleApp">
+<head>
+<title>AJAX 실시간 중복체크</title>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="test.js"></script>
+</head>
+
+<body ng-controller="Ctrl">
+email : <input type="text" ng-model="email" name="email" maxlength="16"  ng-change="up()"/>
+<span id="loadtext" style="color: BLUE;"></span>
+
+</body>
+</html>

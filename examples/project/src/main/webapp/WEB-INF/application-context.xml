@@ -5,6 +5,7 @@
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:jee="http://www.springframework.org/schema/jee" 
 	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:jpa="http://www.springframework.org/schema/data/jpa"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
@@ -13,13 +14,23 @@
         http://www.springframework.org/schema/jee
         http://www.springframework.org/schema/jee/spring-jee-4.0.xsd
         http://www.springframework.org/schema/tx
-        http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
+        http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+        http://www.springframework.org/schema/data/jpa
+        http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
 
 	<context:component-scan base-package="ngbot">
 		<!-- 페이지 컨트롤러는 프런트 컨트롤러에서 관리하기 때문에 제외함 -->
 		<context:exclude-filter type="regex"
 			expression="ngbot.controller.*" />
 	</context:component-scan>
+	
+	<!-- <bean id="entityManagerFactory"
+	   class="org.springframework.orm.jpa.LocalEntityManagerFactoryBean"
+	   p:persistenceUnitName="ticketReservation">
+	</bean>
+	
+	<bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor">
+	</bean> -->
 
 	<!-- 톰캣 서버에 설정된 JNDI DateSource 가져오기 -->
 	<jee:jndi-lookup id="dataSource" jndi-name="java:comp/env/jdbc/bitdb" />
