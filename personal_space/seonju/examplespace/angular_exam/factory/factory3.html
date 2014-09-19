@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html ng-app="myapp" ng-controller="ctrl">
+<head>
+	<title></title>
+	<script type="text/javascript" src="http://code.angularjs.org/1.2.9/angular.min.js"></script>
+	<script type="text/javascript">
+	/**
+	*  Module
+	*
+	* Description
+	*/
+	angular.module('myapp', [])
+	.factory('$globalcontext',function(){
+		return {
+			key: "value"
+		}
+	})
+	.factory('$test', function(){
+		return {
+			key: "value",
+			get:function(){
+				return "aa";
+			},
+			print:function(){
+				console.log("print!"+ this.get());
+			}
+		}
+	})
+	.controller('ctrl', function($test,$globalcontext){
+			$test.print();
+			console.log($globalcontext.key);
+	})
+	</script>
+</head>
+<body>
+
+</body>
+</html>

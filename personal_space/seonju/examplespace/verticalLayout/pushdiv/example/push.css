@@ -1,0 +1,132 @@
+#centerContainer {
+    position:fixed;
+    top:50%;
+    left:50%;
+    width:20px;
+    height:20px;
+    background:red;
+}
+#relativeContainer {
+    position:relative;
+    width:10px;
+    height:10px;
+    background:blue;
+}
+#fullContainer {
+    
+    background:rgba(255,0,0,0.3);
+    position:fixed;
+    width:100%;
+    height:100%;
+    top:0;
+    left:0;
+}
+#content {
+    position:absolute;
+    width:290px;
+    height:390px;
+    top:-200px;
+    left:-150px;
+    background:rgba(0,200,0,0.5);
+    border:5px solid #444;
+    padding:10px;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+#content.right {
+    left:-250px;
+}
+#content.left {
+    left:-50px;
+}
+#content.bottom {
+    top:-300px;
+}
+#content.top {
+    top:-100px;
+}
+    
+#content div {
+    cursor:pointer;
+    color:blue;
+    text-decoration:underline;
+    margin-top:15px;
+    text-align:center;
+}
+#left {
+    position:absolute;
+    top:0;
+    left:-125px;
+    height:100%;
+    width:100px;
+    background:blue;
+    border:1px solid #444;
+    padding:10px;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#left.opened {
+    left:0;
+}
+
+#right {
+    position:absolute;
+    top:0;
+    right:-125px;
+    height:100%;
+    width:100px;
+    background:green;
+    border:1px solid #444;
+    padding:10px;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#right.opened {
+    right:0;
+}
+
+#top {
+    position:absolute;
+    left:0;
+    top:-125px;
+    width:100%;
+    height:100px;
+    background:yellow;
+    border:1px solid #444;
+    padding:10px;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#top.opened {
+    top:0;
+}
+
+#bottom {
+    position:absolute;
+    left:0;
+    bottom:-125px;
+    width:100%;
+    height:100px;
+    background:red;
+    border:1px solid #444;
+    padding:10px;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#bottom.opened {
+    bottom:0;
+}

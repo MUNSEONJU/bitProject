@@ -1,0 +1,97 @@
+*{
+	margin:0;
+	padding:0;
+}
+#vertical{
+	width:100px;
+	height:3000px;
+	background:rgba(0,0,200,0.5);
+	right:40%;
+}
+.fixed{
+	position:fixed;
+}
+.remocon{
+	text-align:center;
+	padding:30px 20px;
+	background:rgba(150,150,150,0.7);
+	right:5%;
+	bottom:30%;
+	color:black;
+}
+.remocon>div{
+	border:1px solid;
+	padding:2px;
+}
+.remocon>div:hover{
+	color:rgb(0,0,200);
+}
+#menu-container{
+	width:100%;
+	height:100%;
+	position:fixed;
+	top:0;
+	left:0;
+
+	background:rgba(220,220,220,1);
+}
+#contents-container{
+	position:fixed;
+	width:10px;
+	height:10px;
+	top:50%;
+	left:50%;
+	background:red;
+}
+#relative-container{
+	width:5px;
+	height:5px;
+	background:blue;
+}
+
+#left{
+		position:absolute;
+    top:0;
+    left:-100px;
+    height:100%;
+    width:100px;
+    background:rgba(100,100,200,0.7);
+    border:1px solid #444;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+#left.active{
+	left:0;
+}
+#top{
+		position:absolute;
+    top:-100px;
+    left:0;
+    width:100%;
+    height:100px;
+    background:rgba(100,100,200,0.7);
+    border:1px solid #444;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+#top.active{
+	top:0;
+}
+#contents-wrap{
+	position:absolute;
+    width:290px;
+    height:390px;
+    top:-200px;
+    left:-150px;
+    background:rgba(100,220,100,0.7);
+    border:5px solid #444;
+    padding:10px;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}

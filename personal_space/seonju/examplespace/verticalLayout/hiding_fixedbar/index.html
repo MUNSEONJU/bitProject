@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html ng-app="myapp">
+<head>
+	<title></title>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script type="text/javascript" src="http://code.angularjs.org/1.2.9/angular.min.js"></script>
+	<script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+  <script src="hide.js"></script>
+  <script>
+  
+  var app = angular.module('myapp', ['verticalLayout']);
+
+  app.controller('mainctrl', function($hide,$window,$scope){
+    //init
+    $scope.setOffset = 0;
+    $scope.currOffset = 0;
+    window.scrollTo(0,0);
+
+    $scope.jumpto = function(){
+  		window.scrollTo(0,$scope.setOffset);
+      $scope.currOffset=$scope.setOffset;
+  	};
+
+    $scope.toggleTop = function(element){
+      $(element).animate( {height:'toggle'} );
+    }
+    $scope.toggleSide = function(element){
+      $(element).animate( {width:'toggle'} );
+    }
+
+
+    $($window).bind('scroll',function(){
+      //현재 offset 표시
+      $('.currLoc').text(window.pageYOffset);
+
+      //scrollHider 메서드 호출
+      $hide.scrollHider("#topbar",[ [0,300] ]);
+      /*console.log($hide.preLoc +","+ $hide.currLoc);*/
+    })
+
+  });
+  </script>
+  <link rel="stylesheet" type="text/css" href="hide.css">
+
+</head>
+
+<body ng-controller="mainctrl">
+  <div id="sidebar">
+  </div>
+
+  <div id="wrap">
+    <div id="remocon" class="fixed">
+      <span> top : <b class="currLoc"></b> px</span>
+      <span ng-click="toggleTop('#topbar')">TOP</span>
+      <span ng-click="toggleSide('#sidebar')">SIDE</span>
+    </div>
+
+  	<div id="progressbar" class="fixed">
+  		
+  	</div>
+
+  	<div id="topbar" class="fixed">
+  		<div id="top-wrap">
+  			<span>
+  				jumpto <input type="text" ng-model="setOffset"> px <button ng-click="jumpto()">V</button>
+  			</span>
+  			<span id="location-box"> top : <b class="currLoc"></b> px</span>
+  		</div>
+  	</div>
+
+    <div id="div1" class="do-not-hide">
+      <h1> do not hide section </h1>
+    </div>
+  		
+    <div id="contents-wrap">
+    </div>
+  </div>
+</body>
+</html>

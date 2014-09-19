@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html ng-app="myapp">
+<head>
+	<title></title>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script type="text/javascript" src="http://code.angularjs.org/1.2.9/angular.min.js"></script>
+	<script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+  <script>
+  
+  var app = angular.module('myapp', []);
+
+  app.factory('$bindScroll', function($window){
+  		var preLoc  = undefined;
+  		var currLoc = undefined;
+  	return {
+		  	scroll: function(){
+		  		angular.element($window).bind('scroll',function(){
+		  			preLoc = currLoc;
+		  			currLoc = window.pageYOffset;
+		  			console.log(currLoc);
+		  			return currLoc;
+		  		})
+		  	}
+	  	}
+  });
+
+  app.controller('mainctrl', function($window,$scope,$bindScroll){
+  	$scope.click = function(){
+  		window.scrollTo(0,$scope.value);
+  	};
+  	$scope.service = $bindScroll;
+  	$scope.service.scroll();
+  });
+
+
+  </script>
+
+  <style>
+  	*{
+  		margin:0;
+  		padding:0;
+  	}
+  	body{
+  		position:relative;
+  	}
+  	.fixed{
+  		position:fixed;
+  		z-index:100;
+  	}
+  	#progressbar{
+  		height:5px;
+  		width:100%;
+  		background:#d9e223;
+  	}
+  	#topbar{
+  		padding-top:10px;
+  		padding-bottom:10px;
+  		background:#fff;
+  		height:30px;
+  		width:100%;
+  		border-top: 1px solid #ddd;
+  		border-bottom: 1px solid #ddd;
+  		top:5px;
+  	}
+  	#top-wrap{
+  		position:relative;
+  		padding:0 20px;
+  	}
+  	#location-box{
+  		position:absolute;
+  		right:20px;
+  	}
+  	#wrap{
+  		position:relative;
+  		top:80px;
+  		left:100px;
+  		background:#eee;
+  		width:500px;
+  		height:2000px;
+  		padding:30px;
+  	}
+  </style>
+</head>
+<body ng-controller="mainctrl">
+	<div id="progressbar" class="fixed">
+		
+	</div>
+
+	<div id="topbar" class="fixed">
+		<div id="top-wrap">
+			<span>
+				jumpto <input type="text" ng-model="value"> px <button ng-click="click()">V</button>
+			</span>
+			<span id="location-box"><b>{{value}}</b>px</span>
+		</div>
+	</div>
+
+	<div id="wrap">
+		
+	</div>
+</body>
+</html>

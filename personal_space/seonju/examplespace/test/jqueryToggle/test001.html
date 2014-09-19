@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<style>
+	*{
+		padding:0;
+		margin:0;
+	}
+	.wrap{
+		position:relative;
+	}
+	div>div>div{
+		background:gray;
+		width:100px;
+		height:100px;
+	}
+	.div1{
+		height:100px;
+		display:none;
+		background:red;
+	}
+	#panel,#flip
+{
+padding:5px;
+text-align:center;
+background-color:#e5eecc;
+border:solid 1px #c3c3c3;
+}
+#panel
+{
+padding:50px;
+display:none;
+}
+</style>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#flip").click(function(){
+    $("#panel").slideToggle("slow");
+  });
+
+		$(".btn1").click(function(){
+				$( ".div1" ).slideToggle();
+		})
+		$('.btn2').click(function() {
+		  $(".div2").toggle("slide");
+		});
+		$(".div3").click(function(){
+				
+			})
+		$('.div4').click(function() {
+		  
+		});
+		$(".div5").click(function(){
+				
+			})
+		$('.div6').click(function() {
+		  
+		});
+		$(".div7").click(function(){
+				
+			})
+		$('.div8').click(function() {
+		  
+		});
+		$('.div9').click(function() {
+		  
+		});
+
+	
+	})
+</script>
+
+<body>
+<div class="wrap">
+	<div>
+		<div class="div1"></div><br>
+	</div>
+	<button class="btn1">a</button>
+	
+
+	<div>
+		<div class="div2"></div><br>
+	<button class="btn2">a</button>
+	</div>
+
+	<div>
+		<div class="div3"></div><br>
+	<button class="btn3">a</button>
+	</div>
+
+	<div>
+		<div class="div4"></div><br>
+	<button class="btn4">a</button>
+	</div>
+
+	<div>
+		<div class="div5"></div><br>
+	<button class="btn5">a</button>
+	</div>
+</div>
+<div id="flip">Click to slide the panel down or up</div>
+<div id="panel">Hello world!</div>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html ng-app="myapp" ng-controller="ctrl">
+<head>
+	<title></title>
+	<script type="text/javascript" src="http://code.angularjs.org/1.2.9/angular.min.js"></script>
+	<script type="text/javascript">
+	/**
+	*  Module
+	*
+	* Description
+	*/
+	angular.module('myapp', [])
+	.factory('$test', function(){
+		return {
+			key:0,
+			get:function(){
+				return "aa";
+			},
+			print:function(){
+				// service에서 또한 자신의 객체값 조정 가능
+				this.key++;
+				console.log(this.key);
+			}
+		}
+	})
+	// this로 서비스 자신의 객체에 접근
+	.controller('ctrl', function($scope,$test){
+			console.log($test.key);
+			$scope.click = function(){
+				// scope를 통해 service를 따로 할당하지 않아도 singleton이기때문에 값을 수정하고 얻을 수 있다.
+				$test.print();
+			}
+	})
+	</script>
+</head>
+<body>
+<button ng-click="click()">btn</button>
+</body>
+</html>
