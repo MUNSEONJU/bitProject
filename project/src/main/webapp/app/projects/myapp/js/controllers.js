@@ -153,7 +153,7 @@ angular.module('ngEditor.controller', []).controller('MainCtrl', function($scope
 
     var reqPromise = $http({
      method : 'POST',
-     url : '/project/ngbot/add.json',
+     url : '/project/ngnewbie/add.json',
      params: {
        randstr : randstr,
        config : config,

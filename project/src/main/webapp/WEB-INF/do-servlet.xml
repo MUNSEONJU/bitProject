@@ -15,8 +15,8 @@
         http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
 
   <!-- *.do 요청을 처리하는 페이지 컨트롤러 생성 -->
-  <context:component-scan base-package="ngbot.controller">
-    <context:exclude-filter type="regex" expression="ngbot.controller.json.*" />
+  <context:component-scan base-package="ngnewbie.controller">
+    <context:exclude-filter type="regex" expression="ngnewbie.controller.json.*" />
   </context:component-scan>
 
   <!-- @ControllerAdvice 등의 MVC 관련 애노테이션들을 처리할 객체를 등록하라! -->
