@@ -1,0 +1,4 @@
+﻿<Resource name="jdbc/bitdb" auth="Container" type="javax.sql.DataSource"
+               maxActive="5" maxIdle="3" maxWait="2000"
+               username="bit" password="1111" driverClassName="com.mysql.jdbc.Driver"
+               url="jdbc:mysql://localhost:3306/bitdb?useUnicode=true&amp;characterEncoding=UTF-8"/>
