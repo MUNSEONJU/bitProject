@@ -3,7 +3,7 @@ angular.module('ngEditor.controller', []).controller('MainCtrl', function($scope
   // 저장한 값들 전역으로 관리
 	$scope.savehtml = '';
 	$scope.savejs = '';
-
+	
 	// init
   var hashArray = location.hash.split('#');
   var urlhash = hashArray[1];
@@ -22,10 +22,19 @@ angular.module('ngEditor.controller', []).controller('MainCtrl', function($scope
     });
 	  reqPromise.success(function(result) {
       if(result.status == 'success') {
+        $scope.clearCode();
         location.href = 'index.html';
       } else {
+        $scope.clearCode();
+        
         var config = eval('(' + result.config + ')');
         
+        $scope.savejs = result.js;
+         editor2.setValue($scope.savejs);
+        $scope.savehtml = result.html;
+         editor1.setValue( $scope.savehtml);
+        $('#savebtn').css('display', 'none');
+
         $scope.ng = config.ng;
         $scope.ngani = config.ngani;
         $scope.ngrt = config.ngrt;
@@ -35,12 +44,8 @@ angular.module('ngEditor.controller', []).controller('MainCtrl', function($scope
         $scope.bs = config.bs;
         $scope.as = config.as;
         $scope.ub = config.ub;
-       
-        $scope.savehtml = result.html;
-         editor1.setValue( $scope.savehtml);
-        $scope.savejs = result.js;
-         editor2.setValue($scope.savejs);
-        $('#savebtn').css('display', 'none');
+        
+        $scope.update();
 	    }
 	  });
 	});//init
@@ -63,7 +68,6 @@ angular.module('ngEditor.controller', []).controller('MainCtrl', function($scope
 	    if($scope.savehtml != editor1.getValue()){
 	      $('#savebtn').css('display', 'inline');
 	    } else {
-	     console.log("sdddd");
 	      $('#savebtn').css('display', 'none');
 	    }
 	  }
@@ -136,29 +140,48 @@ angular.module('ngEditor.controller', []).controller('MainCtrl', function($scope
     reqPromise.success(function(result) {
       var config = eval('(' + result.config + ')');
       
-      $scope.ng = config.ng;
-      $scope.ngani = config.ngani;
-      $scope.ngrt = config.ngrt;
-      $scope.je = config.je;
-      $scope.jq = config.jq;
-      $scope.jqui = config.jqui;
-      $scope.bs = config.bs;
-      $scope.as = config.as;
-      $scope.ub = config.ub;
-      
       // hash값 확인 부분
       if (result.randstr != null){
         //urlhash값이 null이면 hsah값 출력 안함
         if(urlhash == null){
-          editor1.setValue(result.html);
+          $scope.clearCode();
+          
           editor2.setValue(result.js); 
+          editor1.setValue(result.html);
+          
+          $scope.ng = config.ng;
+          $scope.ngani = config.ngani;
+          $scope.ngrt = config.ngrt;
+          $scope.je = config.je;
+          $scope.jq = config.jq;
+          $scope.jqui = config.jqui;
+          $scope.bs = config.bs;
+          $scope.as = config.as;
+          $scope.ub = config.ub;
+          
+          $scope.update();
         }
         else if(urlhash != null){
+          $scope.clearCode();
           location.hash=urlhash;
-          editor1.setValue(result.html);
+          
           editor2.setValue(result.js);
+          editor1.setValue(result.html);
+          
+          $scope.ng = config.ng;
+          $scope.ngani = config.ngani;
+          $scope.ngrt = config.ngrt;
+          $scope.je = config.je;
+          $scope.jq = config.jq;
+          $scope.jqui = config.jqui;
+          $scope.bs = config.bs;
+          $scope.as = config.as;
+          $scope.ub = config.ub;
+          
+          $scope.update();
         }
       }
+      
     });
 	};// 예제소스 불러오기
 
@@ -192,11 +215,14 @@ angular.module('ngEditor.controller', []).controller('MainCtrl', function($scope
       if(result.status == 'success'){
         location.hash = result.randstr;
         
-        $scope.savehtml = result.html;
-        editor1.setValue( $scope.savehtml);
-        $scope.savejs = result.js;
-        editor2.setValue($scope.savejs); 
-        $('#savebtn').css('display', 'none');
+        urlhash = location.hash;
+        
+        if(urlhash != null){
+          location.hash=urlhash;
+          $scope.savejs = editor2.getValue();
+          $scope.savehtml = editor1.getValue();
+          $('#savebtn').css('display', 'none');
+        }
       }
       else if (result.status == 'faild') {
         $scope.add();
