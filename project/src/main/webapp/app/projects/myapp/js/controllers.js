@@ -1,48 +1,49 @@
 angular.module('ngEditor.controller', []).controller('MainCtrl', function($scope, $document, $http) {
-	var ngcdn = "<script src='https://code.angularjs.org/1.2.10/angular.min.js'></script>";
+  
+  // 저장한 값들 전역으로 관리
+	$scope.savehtml = '';
+	$scope.savejs = '';
 
 	// init
+  var hashArray = location.hash.split('#');
+  var urlhash = hashArray[1];
 	$(function(){
-	  var string = location.hash;
-	  var strArray = string.split('#');
-	  var str = strArray[1];
-	 
-	  if(str == null) {
+	  
+	  if(urlhash == null) {
 	    return 'index.html';
 	  };
 	  
 	  var reqPromise = $http({
       method : "POST",
-      url : "/project/edit/"+strArray[1]+".json",
+      url : "/project/edit/"+hashArray[1]+".json",
       params : {
-        str : str    
+        str : urlhash    
       }
     });
 	  reqPromise.success(function(result) {
-	      if(result.status == 'success') {
-	        console.log("저장된 정보 없음");
-	        
-	        location.href = 'index.html';
-	      } else {
-	        console.log("저장된 정보 출력");
-	        
-	        var config = eval('(' + result.config + ')');
-	        $scope.ng = config.ng;
-	        $scope.ngani = config.ngani;
-	        $scope.ngrt = config.ngrt;
-	        $scope.je = config.je;
-	        $scope.jq = config.jq;
-	        $scope.jqui = config.jqui;
-	        $scope.bs = config.bs;
-	        $scope.as = config.as;
-	        $scope.ub = config.ub;
-	       
-	        editor1.setValue(result.html);
-	        editor2.setValue(result.js);
-	      }
-	    });
-	});
-
+      if(result.status == 'success') {
+        location.href = 'index.html';
+      } else {
+        var config = eval('(' + result.config + ')');
+        
+        $scope.ng = config.ng;
+        $scope.ngani = config.ngani;
+        $scope.ngrt = config.ngrt;
+        $scope.je = config.je;
+        $scope.jq = config.jq;
+        $scope.jqui = config.jqui;
+        $scope.bs = config.bs;
+        $scope.as = config.as;
+        $scope.ub = config.ub;
+       
+        $scope.savehtml = result.html;
+         editor1.setValue( $scope.savehtml);
+        $scope.savejs = result.js;
+         editor2.setValue($scope.savejs);
+        $('#savebtn').css('display', 'none');
+	    }
+	  });
+	});//init
 	
   var doc = document;
 	var iframe = doc.getElementById('result');
@@ -58,6 +59,14 @@ angular.module('ngEditor.controller', []).controller('MainCtrl', function($scope
 	$scope.preEditor2_ValueLength = 0;
 	
 	editor1.getSession().on("change", function() {
+	  if(location.hash != ""){
+	    if($scope.savehtml != editor1.getValue()){
+	      $('#savebtn').css('display', 'inline');
+	    } else {
+	     console.log("sdddd");
+	      $('#savebtn').css('display', 'none');
+	    }
+	  }
 		if($scope.dynamicResult) {
 			var currentLength = editor1.getValue().length;
 			var diff = Math.abs($scope.preEditor1_ValueLength - currentLength);
@@ -70,6 +79,13 @@ angular.module('ngEditor.controller', []).controller('MainCtrl', function($scope
 		$scope.preEditor1_ValueLength = editor1.getValue().length;
 	});
 	editor2.getSession().on("change", function() {
+	  if(location.hash != ""){
+      if($scope.savejs != editor2.getValue()){
+        $('#savebtn').css('display', 'inline');
+      } else {
+        $('#savebtn').css('display', 'none');
+      }
+    }
 		if($scope.dynamicResult) {
 			var currentLength = editor2.getValue().length;
 			var diff = Math.abs($scope.preEditor2_ValueLength - currentLength);
@@ -111,31 +127,42 @@ angular.module('ngEditor.controller', []).controller('MainCtrl', function($scope
 	$scope.configDisplay = false;
 	$scope.cdnDisplay = false;
 	
-	$scope.writeExample = function(examTitle) {
-		$('#loading').css('display', 'block');
-		switch(examTitle) {
-			case 'todo'
-			:
-			$scope.bs = true;
-			$scope.jq = true;
-			editor1.setValue('<body ng-app>\n\t<div ng-controller="ctrl">\n\t<input class="form-control" style="width:200px; display:inline;" ng-model="val">\n\t<button class="btn btn-success" ng-click="add()">ADD</button>\n\t<hr>\n\t<table class="table table-striped">\n\t\t<tr style="">\n\t\t\t<th>No</th><th>TODO List</th><th>Delete</th>\n\t\t</tr>\n\t\t<tr ng-repeat="do in list">\n\t\t\t<td>{{$index + 1}}</td>\n\t\t\t<td><input class="form-control" ng-model="list[$index].il"></td>\n\t\t\t<td><button class="btn btn-danger" ng-click="remove($index)">X</button> </td>\n\t\t</tr>\n\t </table>\n\t</div>\n</body>');
-			if(!$scope.je)
-				$scope.je = true;
-			$scope.jsEditor();
-			editor2.setValue('var ctrl = function($scope) {\n\t$scope.val;\n\t$scope.add=function() {\n\t\tif($scope.val!==\"\") {\n\t\t\t$scope.list.push({il:$scope.val});\n\t\t\t$scope.val=\"\";\n\t\t}\n\t};\n\t$scope.list = [\n\t\t\t{il: \"Angular practice\"},\n\t\t\t{il: \"Buy Angular book\"},\n\t\t\t{il: \"Angular study\"}\n\t\t];\n\t$scope.remove = function(index){\n\t\t$scope.list.splice(index,1);\n\t}\n};');
-			break;
-			case 'bind':
-			$scope.bs = false;
-			$scope.jq = false;
-			editor1.setValue('<body ng-app>\n\t<input ng-model="name"><br>\n\tHello, {{name}}\n</body>');
-			editor2.setValue('');
-			break;
-		}
-		$scope.run();
-		$('#loading').css('display', 'none');
-	};
+	// 예제소스 불러오기
+	$scope.writeExample = function(parameter) {
+	  var reqPromise = $http({
+      method : "POST",
+      url : "/project/ngnewbie/" + parameter + ".json",
+    });
+    reqPromise.success(function(result) {
+      var config = eval('(' + result.config + ')');
+      
+      $scope.ng = config.ng;
+      $scope.ngani = config.ngani;
+      $scope.ngrt = config.ngrt;
+      $scope.je = config.je;
+      $scope.jq = config.jq;
+      $scope.jqui = config.jqui;
+      $scope.bs = config.bs;
+      $scope.as = config.as;
+      $scope.ub = config.ub;
+      
+      // hash값 확인 부분
+      if (result.randstr != null){
+        //urlhash값이 null이면 hsah값 출력 안함
+        if(urlhash == null){
+          editor1.setValue(result.html);
+          editor2.setValue(result.js); 
+        }
+        else if(urlhash != null){
+          location.hash=urlhash;
+          editor1.setValue(result.html);
+          editor2.setValue(result.js);
+        }
+      }
+    });
+	};// 예제소스 불러오기
 
-
+  // save
 	$scope.save = function() {
     // 문자열 랜덤 생성
     var ar  = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -145,12 +172,10 @@ angular.module('ngEditor.controller', []).controller('MainCtrl', function($scope
       randstr += ar[randTnum];
     }; 
     
-    var config = {ng : $scope.ng, ngani : $scope.ngani, ngrt : $scope.ngrt
-        , je : $scope.je, jq : $scope.jq, jqui : $scope.jqui, bs : $scope.bs
-        , as : $scope.as, ub : $scope.ub};
+    var config = {ng : $scope.ng, ngani : $scope.ngani, ngrt : $scope.ngrt, 
+        je : $scope.je, jq : $scope.jq, jqui : $scope.jqui, bs : $scope.bs, 
+        as : $scope.as, ub : $scope.ub};
     
-    console.log(config);
-
     var reqPromise = $http({
      method : 'POST',
      url : '/project/ngnewbie/add.json',
@@ -164,21 +189,21 @@ angular.module('ngEditor.controller', []).controller('MainCtrl', function($scope
     
     reqPromise.success(function(result) {
       // 중복되면 다시 불려지고 중복 안되면 등록
-      if (result.status == 'success') {
-        console.log(result.status + "중복됨");
-        
-        $scope.add();
-      }
-      else if(result.status == 'faild'){
-        console.log("등록....");
-        console.log(result.status);
-        
+      if(result.status == 'success'){
         location.hash = result.randstr;
-        editor1.setValue(result.html);
-        editor2.setValue(result.js);        
+        
+        $scope.savehtml = result.html;
+        editor1.setValue( $scope.savehtml);
+        $scope.savejs = result.js;
+        editor2.setValue($scope.savejs); 
+        $('#savebtn').css('display', 'none');
+      }
+      else if (result.status == 'faild') {
+        $scope.add();
       };
     });
-  };
+  };// save
+  
 	$scope.share = function() {
 		alert('share()');
 	};
@@ -466,7 +491,10 @@ angular.module('ngEditor.controller', []).controller('MainCtrl', function($scope
     var htmlCode = editor1.getValue();
     var jsCode = editor2.getValue();
  
-    var headCode = '';
+    zip.file("index.html", htmlCode);
+    zip.file("app.js", jsCode);
+    
+    /*var headCode = '';
     
     var headStart = htmlCode.indexOf('<head>');
     var headEnd = htmlCode.indexOf('</head>') - headStart + 7;
@@ -474,7 +502,6 @@ angular.module('ngEditor.controller', []).controller('MainCtrl', function($scope
     var ngc = '';
     if($scope.ng)
       ngc = ngcdn;
-    
     
     var idocHead = idoc.getElementsByTagName('head')[0];
     idocHead.removeChild(idocHead.firstChild);
@@ -489,7 +516,7 @@ angular.module('ngEditor.controller', []).controller('MainCtrl', function($scope
     
     zip.file("index.html", htmlCode);
     if($scope.je)
-      zip.file("app.js", editor2.getValue());
+      zip.file("app.js", editor2.getValue());*/
       
     var blob = zip.generate({type:"blob"});
     saveAs(blob, "example.zip");

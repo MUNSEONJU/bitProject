@@ -19,7 +19,6 @@
 	<!-- Download, zip generator -->
 	<script src="js/jszip.js"></script>
   <script src="js/FileSaver.js"></script>
-  <script src="js/test.js"></script>
 	
 	
 	 <!-- ace editor -->
@@ -58,8 +57,7 @@
 		
 		<div class="logo">
 			<a href="../../index.html">
-			<img class="logoimg" src="img
-			/mainlogo.gif">
+			<img class="logoimg" src="img/mainlogo.gif">
 			</a>
 		</div>
 		
@@ -70,10 +68,10 @@
 			ng-click="configActive()"><i class="glyphicon glyphicon-cog"></i></button>
 			<button class="btn btn-black btn-sm" data-toggle="tooltip" data-original-title="CDN"
 			ng-click="cdnActive()">CDN</button>
-			<button class="btn btn-black btn-sm" data-toggle="tooltip" data-original-title="Save(Ctrl + s)"
+			<button class="btn btn-black btn-sm" id="savebtn" data-toggle="tooltip" data-original-title="Save(Ctrl + s)"
 			ng-click="save()"><i class="glyphicon glyphicon-floppy-disk"></i></button>
 			<button class="btn btn-black btn-sm" data-toggle="tooltip" data-original-title="Download"
-			ng-click="download()" ng-click="download()"><i class="glyphicon glyphicon-download-alt"></i></button>
+			ng-click="download()" ><i class="glyphicon glyphicon-download-alt"></i></button>
 			<!-- <button class="btn btn-black btn-sm" data-toggle="tooltip" data-original-title="Share()"
 			ng-click="share()"><i class="glyphicon glyphicon-share"></i></button> -->
 			<button class="btn btn-black btn-sm" ng-click="clearCode()">Clear</button>
