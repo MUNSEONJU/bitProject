@@ -1,0 +1,44 @@
+apply plugin: 'java'    
+apply plugin: 'eclipse-wtp'
+apply plugin: 'war'
+
+compileJava {
+  options.encoding = 'UTF-8'  
+}
+
+eclipse {
+  wtp {
+    facet {
+      facet name: 'jst.web', version: '3.0'
+      facet name: 'jst.java', version: '1.7'
+    }
+  }
+}
+
+sourceCompatibility = 1.7
+version = '1.0'
+
+repositories {
+  mavenCentral()
+}
+
+dependencies {
+  providedCompile 'javax.servlet:javax.servlet-api:3.0.1'
+  
+  compile 'com.fasterxml.jackson.core:jackson-databind:2.4.2'
+  compile 'org.springframework.data:spring-data-jpa:1.6.4.RELEASE'
+  compile 'commons-fileupload:commons-fileupload:1.3.1'
+  compile 'com.google.code.gson:gson:2.2.4'
+  compile 'org.springframework:spring-webmvc:4.0.6.RELEASE'
+  compile 'org.springframework:spring-jdbc:4.0.6.RELEASE'
+  compile 'org.mybatis:mybatis-spring:1.2.2'
+  compile 'org.springframework:spring-context:4.0.6.RELEASE'
+  compile 'javax.servlet:jstl:1.2'
+  compile 'mysql:mysql-connector-java:5.1.31'
+  compile 'log4j:log4j:1.2.17'
+  compile 'org.mybatis:mybatis:3.2.7'
+  compile group: 'commons-collections', name: 'commons-collections', version: '3.2'
+  
+  // testCompile로 지정된 라이브러리 => 컴파일할 때 사용하고, 테스트할 때 사용한다. 배치할 때는 제외한다
+  testCompile group: 'junit', name: 'junit', version: '4.+'
+}
