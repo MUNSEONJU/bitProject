@@ -1,0 +1,34 @@
+<body ng-app>
+  <div ng-controller="ct">
+  <button ng-click="changeList('a')">A</button>
+  <button ng-click="changeList('b')">B</button>
+  <button ng-click="changeList('c')">C</button>
+  
+  <ul class="pagination">
+    <li ng-repeat="list in pageList" class=""><a href="#" ng-click="">{{list}}</a></li>
+  </ul>
+  </div>
+</body>
+
+
+var ct = function($scope) {
+  var al = ['$http', '$q'];
+  var bl = ['binding', '2way - bind', 'i m bind'];
+  var cl = ['EEEEE', '12515', '124125', '77777', '125'];
+  $scope.pageList;
+  $scope.changeList = function(what) {
+    switch (what) {
+          case 'a':
+            $scope.pageList = al;
+            break;
+          case 'b':
+            $scope.pageList = bl;
+            break;
+          case 'c':
+            $scope.pageList = cl;
+            break;
+        }    
+  };
+};
+
+
