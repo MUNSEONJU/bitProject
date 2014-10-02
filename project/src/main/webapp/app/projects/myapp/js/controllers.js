@@ -695,17 +695,36 @@ angular.module('ngEditor.controller', []).controller('MainCtrl', function($scope
     $('.result_label').fadeIn(300);
   });
   
+  $scope.modalTitle = '';
   $scope.modalContent = '';
+  $scope.modalFooter = '';
+  
+  var http = ['$http', '$q'];
   
   $scope.pager = function(parameter){
-    //$scope.modalContent = '<input>'+ parameter;
+    switch(parameter) {
+    case '$http' :
+      $scope.modalTitle = '$http / $q';
+      $scope.modalFooter = http;
+    }
+    
     var reqPromise = $http({
       method : "POST",
-      url : "/project/ngnewbie/" + parameter + ".json",
+      url : "/project/ngnewbie/page-" + parameter + "-list.json",
     });
     reqPromise.success(function(result) {
       $scope.modalContent = $sce.trustAsHtml(result.html);
-      //console.log(result.html);
+    });
+    //$('ul.pagination > li')[0].setAttribute('class', 'active');
+  };
+  
+  $scope.changeContent = function(parameter) {
+    $http({
+      method : "POST",
+      url : "/project/ngnewbie/page-" + parameter + "-list.json",
+    })
+    .success(function(result) {
+      $scope.modalContent = $sce.trustAsHtml(result.html);
     });
   }
 });
