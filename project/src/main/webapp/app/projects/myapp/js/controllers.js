@@ -36,7 +36,7 @@ angular.module('ngEditor.controller', []).controller('MainCtrl', function($scope
   	    // 저장된 urlhash가 없다면은
         if(result.status == 'success') {
           $scope.clearCode();
-          $scope.errorCheck = true;
+          //$scope.errorCheck = true;
           location.href = 'editor.html';
         } else {
           // 저장된 urlhash가 있다면은
@@ -57,8 +57,11 @@ angular.module('ngEditor.controller', []).controller('MainCtrl', function($scope
            
           $('#savebtn').attr('disabled', true);
           
-          $scope.errorCheck = true;
+          //$scope.errorCheck = true;
   	    };
+  	    
+  	    $scope.errorCheck = true;
+  	    
   	    setTimeout(function() {
   	      $('#loading').css('display', 'none');
   	      $('#cover').css('display', 'none');
@@ -84,20 +87,20 @@ angular.module('ngEditor.controller', []).controller('MainCtrl', function($scope
 	
 	editor1.getSession().on("change", function() {
 	  
+	  if(location.hash != ""){
+      if($scope.savehtml != editor1.getValue()){
+        $('#savebtn').attr('disabled', false);
+      } else {
+        $('#savebtn').attr('disabled', true);
+      }
+    }
+	  
 	  if(editor1.getValue()=='' && editor2.getValue()==''){
 	    $('#savebtn').attr('disabled', true);
 	    $('#downloadbtn').attr('disabled', true);
 	  } else {
 	    $('#savebtn').attr('disabled', false);
 	    $('#downloadbtn').attr('disabled', false);
-	  }
-	  
-	  if(location.hash != ""){
-	    if($scope.savehtml != editor1.getValue()){
-	      $('#savebtn').attr('disabled', false);
-	    } else {
-	      $('#savebtn').attr('disabled', true);
-	    }
 	  }
 	  
 		if($scope.dynamicResult) {
@@ -113,6 +116,14 @@ angular.module('ngEditor.controller', []).controller('MainCtrl', function($scope
 	});
 	editor2.getSession().on("change", function() {
 	  
+	  if(location.hash != ""){
+      if($scope.savejs != editor2.getValue()){
+        $('#savebtn').attr('disabled', false);
+      } else {
+        $('#savebtn').attr('disabled', true);
+      }
+    }
+    
 	  if(editor1.getValue()=='' && editor2.getValue()==''){
       $('#savebtn').attr('disabled', true);
       $('#downloadbtn').attr('disabled', true);
@@ -121,13 +132,6 @@ angular.module('ngEditor.controller', []).controller('MainCtrl', function($scope
       $('#downloadbtn').attr('disabled', false);
     }
 	  
-	  if(location.hash != ""){
-      if($scope.savejs != editor2.getValue()){
-        $('#savebtn').attr('disabled', false);
-      } else {
-        $('#savebtn').attr('disabled', true);
-      }
-    }
 	  
 		if($scope.dynamicResult) {
 			var currentLength = editor2.getValue().length;
@@ -172,16 +176,20 @@ angular.module('ngEditor.controller', []).controller('MainCtrl', function($scope
 	
 	// 예제소스 불러오기
 	$scope.writeExample = function(parameter) {
+	  $scope.errorCheck = false;
 	  $('#loading').css('display', 'block');
 	  $('#cover').css('display', 'block');
 	  //$scope.dynamicResult = false;
-	  $scope.errorCheck = false;
-	  $http({
+	  
+	  var reqPromise = $http({
       method : "POST",
       url : "/project/ngnewbie/" + parameter + ".json",
-    })
-    .success(function(result) {
-      
+    });
+	  
+	  reqPromise.success(function(result) {
+
+	    $scope.errorCheck = false;
+	    
       var config = eval('(' + result.config + ')');
       
       // hash값 확인 부분
@@ -203,7 +211,6 @@ angular.module('ngEditor.controller', []).controller('MainCtrl', function($scope
           editor2.setValue(result.js); 
           editor1.setValue(result.html);
           
-          $scope.update();
         }
         else if(urlhash != null){
           $scope.clearCode();
@@ -223,7 +230,6 @@ angular.module('ngEditor.controller', []).controller('MainCtrl', function($scope
           editor2.setValue(result.js);
           editor1.setValue(result.html);
           
-          $scope.update();
         }
       };
       $scope.update();
@@ -235,8 +241,7 @@ angular.module('ngEditor.controller', []).controller('MainCtrl', function($scope
         $scope.update();
         $scope.errorCheck = true;
         console.clear();
-      }, 300);
-      
+      }, 500);
       
     });
     
