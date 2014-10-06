@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html ng-app="myapp" ng-controller="ctrl">
+<head>
+	<title></title>
+	<script type="text/javascript" src="http://code.angularjs.org/1.2.9/angular.min.js"></script>
+	<script type="text/javascript">
+
+	// myapp에 주입될 외부 모듈입니다.
+	angular.module('myservice', [])
+	// service 메서드는 인자로 서비스의 이름과 리턴할 객체 레퍼런스를 정의합니다.
+	.service('vegetable',function(){
+		this.onion = "sphere";
+		this.feature = function(){
+			alert("onion : " + this.onion);
+		}
+	})
+
+
+	// 반드시 사용할 모듈을 주입해줍니다.
+	angular.module('myapp', ['myservice'])
+
+	// value 메서드는 인자로 이름과 값을 정의합니다.
+	.value('pineapple','pineapple')
+
+	// factory 메서드는 직접 객체를 리턴합니다.
+	.factory('fruit', function(){
+		return {
+			apple: "red",
+
+			banana:function(){
+				return "yellow";
+			},
+
+			feature:function(orange,pineapple){
+				pineapple = "pointy";
+
+				alert("apple : " + this.apple + "\n"
+					+ "banana : " + this.banana() + "\n"
+					+ "orange : " + orange + "\n"
+					+ "pineapple : " + pineapple);
+			}
+		}
+	})
+
+	// 서비스를 사용할 땐 반드시 인자로 사용할 서비스를 명시해 줍니다.
+	.controller('ctrl', function($scope,fruit,vegetable){
+			$scope.factoryBtn = function(){
+				fruit.feature();
+			}
+			$scope.serviceBtn = function(){
+				vegetable.feature();
+			}
+	})
+	</script>
+</head>
+<body>
+<button ng-click="factoryBtn()">factory</button>
+<button ng-click="serviceBtn()">service</button>
+</body>
+</html>

@@ -1,0 +1,36 @@
+*{
+	margin:0;
+	padding:0;
+}
+#board-wrap{
+	width:800px;
+	margin:0 auto;
+}
+#board-wrap>div{
+	text-align:center;
+	margin:0 auto;
+}
+#board-table .board-head>th{
+	text-align: center;
+}
+#board-table .board-article>td{
+	text-align: center;
+}
+#board-table .board-article>td.article-title{
+	text-align: left;
+}
+#board-table .board-head>th:nth-child(1){
+	width:70px;
+}
+#board-table .board-head>th:nth-child(2){
+	width:300px;
+}
+#board-table .board-head>th:nth-child(3){
+	width:120px;
+}
+#board-table .board-head>th:nth-child(4){
+	width:120px;
+}
+#board-table .board-head>th:nth-child(5){
+	width:80px;
+}

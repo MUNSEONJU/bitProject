@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html ng-app="myapp" ng-controller="ctrl">
+<head>
+	<title>LIST</title>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+	<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="style.css">
+
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script type="text/javascript" src="http://code.angularjs.org/1.2.9/angular.min.js"></script>
+	<script type="text/javascript" src="bootstrap-colorpicker-module.js"></script>
+	<script type="text/javascript" src="angular-wysiwyg.js"></script>
+
+	<script type="text/javascript" src="script.js"></script>
+</head>
+<body>
+<div id="board-wrap">
+
+	<div id="table-wrap">
+		<table id="board-table" class="table table-hover">
+			<thead>
+				<tr class="board-head">
+					<th>글번호</th>
+					<th>글제목</th>
+					<th>작성자</th>
+					<th>작성일</th>
+					<th>조회수</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="article in articles" class="board-article article{{no}}">
+					<td class="article-no">{{article.no}}</td>
+					<td class="article-title" align="left"><a href="#">{{article.title}}</a></td>
+					<td class="article-writer">{{article.writer}}</td>
+					<td class="article-date">{{article.date}}</td>
+					<td class="article-count">{{article.count}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div><!--table wrap-->
+
+	<div id="tool-wrap">
+		<button class="btn btn-warning">글쓰기</button>
+	</div>
+
+	<div id="pager-wrap">
+		<ul class="pagination">
+		  <li><a href="#">&laquo;</a></li>
+		  <li><a href="#">이전</a></li>
+		  <li><a href="#">1</a></li>
+		  <li><a href="#">2</a></li>
+		  <li><a href="#">3</a></li>
+		  <li><a href="#">4</a></li>
+		  <li><a href="#">5</a></li>
+		  <li><a href="#">다음</a></li>
+		  <li><a href="#">&raquo;</a></li>
+		</ul>
+	</div> <!-- pager wrap -->
+
+	<wysiwyg textarea-id="question" textarea-class="form-control"  textarea-height="80px" textarea-name="textareaQuestion" textarea-required ng-model="yourModel.model" enable-bootstrap-title="true"></wysiwyg>
+
+</div> <!-- board wrap -->
+</body>
+</html>

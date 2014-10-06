@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script>
+			function clickevent(){
+				console.log("asdf");
+			}
+			function btn(){
+				$("#theone").off("clickevent()");
+			}
+	</script>
+</head>
+<body>
+  <div id="theone" onclick="clickevent()">link</div>
+  <button id="btn" onclick="btn()">off</button>
+</body>
+</html>

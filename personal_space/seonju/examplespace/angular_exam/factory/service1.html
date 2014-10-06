@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html >
+<head>
+	<title></title>
+	<script type="text/javascript" src="http://code.angularjs.org/1.2.9/angular.min.js"></script>
+</head>
+<body ng-app>
+<script type="text/javascript">
+
+	//$scope서비스를 주입하여 사용합니다.
+	var ctrl = function($scope){
+			$scope.value = "안녕하세요 뉴비입니다";
+	}
+</script>
+<div ng-controller="ctrl">{{value}}</div>
+</body>
+</html>
