@@ -1,0 +1,60 @@
+에디터 메뉴 기능
+	- 에디터 페이지 요청시 url에 해쉬값이 붙어 있으면, 
+		DB에서 해당 해쉬값을 찾고 없으면 기본 에디터 페이지로 이동
+	
+1. settings 
+ - 에디터 테마 변경 : 바꿀때 동적으로 변경됨.
+ - font-size 조정 : +, - 조정 (값을 바꿀 때 동적으로 font-size가 변화)
+ - tab-size 조정 : +, - 조정
+ - Dynamic Result : on/off 기능, JS함수 설명
+		off시 run 버튼 활성화 (F5로 단축키 걸어둠)
+ 
+ 
+ - Error Check : on/off 기능
+ - js Editor : on/off 기능 (off시 html에디터 크기가 확장됨)
+ 
+2. CDN
+ - CDN을 on/off할 수 있는 스위치 제공
+ 
+	스위치 컴포넌트는 외부 css라이브러리 사용
+ 
+ 
+3. new page
+	- 리로드 페이지
+ 
+ 
+4. save
+ - Hash값을 생성하여 서버 DB에 CND/settings 설정정보, html, js 코드를 저장 
+
+5. 저장된 데이터 가져오기 
+ - 고유한 Hash값이 붙은 URL로 접속하면 저장된 데이터를 가져옴 
+ 
+6. 다운로드
+ - html과 js를 zip파일로 압축(JSzip lib 사용), 
+	 사용자 컴퓨터로 다운로드(FileSaver lib 사용)
+		
+		※ 다운로드시 html 문서 형식을 자동으로 만들어서 다운로드
+
+6. refresh 기능
+
+7. result 크게/작게 토글
+
+
+에디터 예제 기능
+ - 물음표 클릭시 modal창을 띄우고 해당 주제의 설명을 출력
+		(ajax요청, angular의 양방향 바인딩 기능으로 ajax로 가져온 컨텐츠만 변경)
+		
+ - sample apps 에 Angular를 활용한 예제코드 수록	
+	
+	
+에디터 세부 기능
+ - 작성된 내용이 없으면 save, download 비활성화
+ - 불러온 코드를 수정하지 않으면 save비활성화
+ - resize bar 클릭시 예제 아코디언 숨기기/보이기 토글
+ - 페이지 나갈시 메시지 띄우기
+ 
+ 
+ 요소가 움직이는 효과는 css 애니메이션을 활용
+ 
+ 
+ 
